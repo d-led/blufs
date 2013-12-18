@@ -9,8 +9,32 @@
  */
 
 #include "blufs_lib.h"
+#include <boost/filesystem.hpp>
+#include <luabind/luabind.hpp>
+#include <string>
+#include <stdexcept>
+
+namespace blufs {
+	using namespace boost::filesystem;
+
+	bool chdir(std::string const& p) {
+		try {
+			current_path(p);
+		} catch (std::exception const& e) {
+			std::cerr<<"blufs error: "<<e.what()<<std::endl;
+			return false;
+		}
+		return true;
+	}
+}
 
 void register_blufs (lua_State* L) {
+	using namespace luabind;
+
+	module(L, "blufs")
+	[
+		def("chdir",&blufs::chdir)
+	];
 }
 
 /**

@@ -29,7 +29,7 @@ endif
 
 ifeq ($(config),debug)
   OBJDIR     = Debug/obj/Debug/blufs
-  TARGETDIR  = ../macosx/bin/Debug
+  TARGETDIR  = ..
   TARGET     = $(TARGETDIR)/blufs.so
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG -DGTEST_USE_OWN_TR1_TUPLE=1
   INCLUDES  += -I.. -I../luabind
@@ -38,7 +38,7 @@ ifeq ($(config),debug)
   CXXFLAGS  += $(CFLAGS) 
   LDFLAGS   += -L.. -L../macosx/bin/Debug -dynamiclib -flat_namespace
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LIBS      += ../macosx/bin/Debug/libluabind.a -llua
+  LIBS      += ../macosx/bin/Debug/libluabind.a -llua -lboost_system -lboost_filesystem
   LDDEPS    += ../macosx/bin/Debug/libluabind.a
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(LIBS) $(LDFLAGS)
   define PREBUILDCMDS
@@ -51,7 +51,7 @@ endif
 
 ifeq ($(config),release)
   OBJDIR     = Release/obj/Release/blufs
-  TARGETDIR  = ../macosx/bin/Release
+  TARGETDIR  = ..
   TARGET     = $(TARGETDIR)/blufs.so
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE -DGTEST_USE_OWN_TR1_TUPLE=1
   INCLUDES  += -I.. -I../luabind
@@ -60,7 +60,7 @@ ifeq ($(config),release)
   CXXFLAGS  += $(CFLAGS) 
   LDFLAGS   += -L.. -L../macosx/bin/Release -Wl,-x -dynamiclib -flat_namespace
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LIBS      += ../macosx/bin/Release/libluabind.a -llua
+  LIBS      += ../macosx/bin/Release/libluabind.a -llua -lboost_system -lboost_filesystem
   LDDEPS    += ../macosx/bin/Release/libluabind.a
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(LIBS) $(LDFLAGS)
   define PREBUILDCMDS

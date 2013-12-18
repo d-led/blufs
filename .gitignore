@@ -113,4 +113,4 @@ packages/
 *.lib
 *.so
 
-*.so
+*.dylib

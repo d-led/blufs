@@ -9,7 +9,7 @@ local settings = {
 	links = {
 		linux = { 'lua' },
 		windows = { 'lua5.1' },
-		macosx = { 'lua' }
+		macosx = { 'lua', 'boost_system', 'boost_filesystem' }
 	}
 }
 
@@ -41,5 +41,7 @@ make_shared_lib('blufs', {
 })
 
 links { 'luabind' , settings.links[OS] }
+
+targetdir '.'
 
 platform_specifics()
