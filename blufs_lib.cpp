@@ -9,7 +9,10 @@
  */
 
 #include "blufs_lib.h"
+
 #include <boost/filesystem.hpp>
+#include <boost/interprocess/sync/file_lock.hpp>
+
 #include <luabind/luabind.hpp>
 #include <string>
 #include <stdexcept>
@@ -17,12 +20,25 @@
 namespace blufs {
 	using namespace boost::filesystem;
 
+	bool Error(std::exception const& e) {
+		std::cerr<<"blufs error: "<<e.what()<<std::endl;
+		return false;
+	}
+
 	bool chdir(std::string const& p) {
 		try {
 			current_path(p);
 		} catch (std::exception const& e) {
-			std::cerr<<"blufs error: "<<e.what()<<std::endl;
-			return false;
+			return Error(e);
+		}
+		return true;
+	}
+
+	bool lock(std::string const& fn) {
+		try {
+			boost::interprocess::file_lock flock(fn.c_str());
+		} catch (std::exception const& e) {
+			return Error(e);
 		}
 		return true;
 	}
@@ -33,7 +49,8 @@ void register_blufs (lua_State* L) {
 
 	module(L, "blufs")
 	[
-		def("chdir",&blufs::chdir)
+		def("chdir",&blufs::chdir),
+		def("lock",&blufs::lock)
 	];
 }
 
