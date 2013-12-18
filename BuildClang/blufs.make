@@ -28,18 +28,18 @@ ifndef RESCOMP
 endif
 
 ifeq ($(config),debug)
-  OBJDIR     = Debug/obj
-  TARGETDIR  = ..
-  TARGET     = $(TARGETDIR)/libblufs.dylib
-  DEFINES   += -DDEBUG -D_DEBUG -DGTEST_USE_OWN_TR1_TUPLE=1
-  INCLUDES  += -I..
+  OBJDIR     = Debug/obj/Debug/blufs
+  TARGETDIR  = ../macosx/bin/Debug
+  TARGET     = $(TARGETDIR)/blufs.so
+  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG -DGTEST_USE_OWN_TR1_TUPLE=1
+  INCLUDES  += -I.. -I../luabind
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
-  CFLAGS    += $(CPPFLAGS) $(ARCH) -g -fPIC -v  -fPIC -std=c++0x -stdlib=libc++ -std=c++11
+  CFLAGS    += $(CPPFLAGS) $(ARCH) -g -fPIC -v  -fPIC
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L.. -dynamiclib -flat_namespace
+  LDFLAGS   += -L.. -L../macosx/bin/Debug -dynamiclib -flat_namespace
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LIBS      += -lpthread -lc++
-  LDDEPS    += 
+  LIBS      += ../macosx/bin/Debug/libluabind.a -llua
+  LDDEPS    += ../macosx/bin/Debug/libluabind.a
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(LIBS) $(LDFLAGS)
   define PREBUILDCMDS
   endef
@@ -50,18 +50,18 @@ ifeq ($(config),debug)
 endif
 
 ifeq ($(config),release)
-  OBJDIR     = Release/obj
-  TARGETDIR  = ..
-  TARGET     = $(TARGETDIR)/libblufs.dylib
-  DEFINES   += -DRELEASE -DGTEST_USE_OWN_TR1_TUPLE=1
-  INCLUDES  += -I..
+  OBJDIR     = Release/obj/Release/blufs
+  TARGETDIR  = ../macosx/bin/Release
+  TARGET     = $(TARGETDIR)/blufs.so
+  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE -DGTEST_USE_OWN_TR1_TUPLE=1
+  INCLUDES  += -I.. -I../luabind
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
-  CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -fPIC -v  -fPIC -std=c++0x -stdlib=libc++ -std=c++11
+  CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -fPIC -v  -fPIC
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L.. -Wl,-x -dynamiclib -flat_namespace
+  LDFLAGS   += -L.. -L../macosx/bin/Release -Wl,-x -dynamiclib -flat_namespace
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LIBS      += -lpthread -lc++
-  LDDEPS    += 
+  LIBS      += ../macosx/bin/Release/libluabind.a -llua
+  LDDEPS    += ../macosx/bin/Release/libluabind.a
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(LIBS) $(LDFLAGS)
   define PREBUILDCMDS
   endef

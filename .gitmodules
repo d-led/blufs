@@ -4,3 +4,6 @@
 [submodule "luawrapper"]
 	path = luawrapper
 	url = https://github.com/Tomaka17/luawrapper.git
+[submodule "luabind"]
+	path = luabind
+	url = https://github.com/rpavlik/luabind.git
