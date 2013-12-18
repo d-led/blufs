@@ -1,0 +1,6 @@
+[submodule "premake"]
+	path = premake
+	url = https://github.com/d-led/premake-meta-cpp.git
+[submodule "luawrapper"]
+	path = luawrapper
+	url = https://github.com/Tomaka17/luawrapper.git
