@@ -25,7 +25,7 @@ extern "C" BLUFS int luaopen_blufs (lua_State* L) {
 }
 
 /**
- * Copyright (c) 2013 Dmitry Ledentsov
+ * Copyright (c) 2013-2014 Dmitry Ledentsov
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
