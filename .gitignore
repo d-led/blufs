@@ -114,3 +114,4 @@ packages/
 *.so
 
 *.dylib
+test_blufs.exe
