@@ -6,7 +6,7 @@ ifndef config
 endif
 export config
 
-PROJECTS := luabind blufs
+PROJECTS := luabind blufs test_blufs
 
 .PHONY: all clean help $(PROJECTS)
 
@@ -20,9 +20,14 @@ blufs: luabind
 	@echo "==== Building blufs ($(config)) ===="
 	@${MAKE} --no-print-directory -C . -f blufs.make
 
+test_blufs: luabind blufs
+	@echo "==== Building test_blufs ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f test_blufs.make
+
 clean:
 	@${MAKE} --no-print-directory -C . -f luabind.make clean
 	@${MAKE} --no-print-directory -C . -f blufs.make clean
+	@${MAKE} --no-print-directory -C . -f test_blufs.make clean
 
 help:
 	@echo "Usage: make [config=name] [target]"
@@ -36,5 +41,6 @@ help:
 	@echo "   clean"
 	@echo "   luabind"
 	@echo "   blufs"
+	@echo "   test_blufs"
 	@echo ""
 	@echo "For more information, see http://industriousone.com/premake/quick-start"
