@@ -13,6 +13,17 @@ Original Boost Filesystem API: [@boost.org](http://www.boost.org/doc/libs/1_57_0
 
 see [test.cpp](./test.cpp)
 
+dependencies
+============
+
+- [Lua](http://www.lua.org/)
+- [Boost Filesystem](http://www.boost.org/doc/libs/1_47_0/libs/filesystem/v3/doc/reference.html)
+- [LuaBind](http://www.rasterbar.com/products/luabind/docs.html)
+
+testing using:
+- [Catch](https://github.com/philsquared/Catch)
+- [LuaState](https://github.com/AdUki/LuaState)
+
 license
 =======
 
