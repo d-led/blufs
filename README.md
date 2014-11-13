@@ -6,6 +6,13 @@ a lua wrapper of the [Boost Filesystem](http://www.boost.org/doc/libs/1_57_0/lib
 [![Build Status](https://travis-ci.org/d-led/blufs.png?branch=master)](https://travis-ci.org/d-led/blufs)
 
 
+specification
+=============
+
+Original Boost Filesystem API: [@boost.org](http://www.boost.org/doc/libs/1_57_0/libs/filesystem/doc/reference.html)
+
+see [test.cpp](./test.cpp)
+
 license
 =======
 
