@@ -14,7 +14,7 @@ protected:
     path exec_path;
 public:
     LuaTest() :
-        exec_path(unique_path())
+        exec_path(absolute(unique_path()))
     {
         add_lua_cpath();
         load_library_under_test();
@@ -46,7 +46,7 @@ private:
 
     void clean_up_test_folder() {
         try {
-            current_path(current_path().parent_path());
+            current_path(exec_path.parent_path());
             remove_all(exec_path);
         }
         catch (std::exception& e) {
@@ -76,4 +76,14 @@ TEST_CASE_METHOD(LuaTest, "throwing inside bound functions is allowed") {
     ];
 
     CHECK_THROWS_AS(state.doString("throwing_function()"), lua::RuntimeError);
+}
+
+TEST_CASE_METHOD(LuaTest, "changing and querying current directory") {
+    std::string res = state["blufs"]["current_path"]();
+    CHECK(res == current_path().generic_string());
+
+    state.doString("blufs.current_path('..')");
+    std::string parent_dir = state["blufs"]["current_path"]();
+    CHECK(absolute(current_path()) == absolute(parent_dir));
+    CHECK(absolute(current_path()) != absolute(res));
 }

@@ -22,24 +22,51 @@
 
 namespace blufs {
     namespace fs=boost::filesystem;
+}
 
-    void current_path(std::string const& to_where) {
-        fs::current_path(to_where);
-    }
+namespace luabind
+{
+    namespace fs = boost::filesystem;
 
-    fs::path current_path() {
-        return fs::current_path();
-    }
+    template <>
+    struct default_converter<fs::path>
+        : native_converter_base<fs::path>
+    {
+        static int compute_score(lua_State* L, int index)
+        {
+            return lua_type(L, index) == LUA_TSTRING ? 0 : -1;
+        }
+
+        fs::path from(lua_State* L, int index)
+        {
+            return fs::path(lua_tostring(L, index));
+        }
+
+        void to(lua_State* L, fs::path const& x)
+        {
+            lua_pushstring(L, x.generic_string().c_str());
+        }
+    };
+
+    template <>
+    struct default_converter<fs::path const&>
+        : default_converter<fs::path>
+    {};
 }
 
 void register_blufs (lua_State* L) {
     using namespace luabind;
     using namespace blufs;
 
+    open(L);
+
     module(L, "blufs")
     [
-        def("current_path", ((void(*)(std::string const&))current_path)),
-        def("current_path", ((fs::path(*)())current_path))
+        class_<fs::path>("path")
+            .def(constructor<std::string const&>())
+        ,
+        def("current_path", ((void(*)(fs::path const&))fs::current_path)),
+        def("current_path", ((fs::path(*)())fs::current_path))
     ];
 }
 
