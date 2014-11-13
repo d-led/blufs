@@ -22,6 +22,8 @@ public:
             + "]] ..package.cpath";
         state.doString(cpath);
 
+        std::cerr<<cpath<<std::endl;
+
         REQUIRE_NOTHROW(state.doString("require 'blufs'"));
 
         create_directories(exec_path);

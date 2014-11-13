@@ -7,7 +7,7 @@ make_solution 'blufs'
 local OS = os.get()
 local settings = {
 	links = {
-		linux = { 'lua' },
+		linux = { 'lua5.1', 'boost_system', 'boost_filesystem', 'dl', 'pthread' },
 		windows = { 'lua5.1' },
 		macosx = { 'lua', 'boost_system', 'boost_filesystem' }
 	}
@@ -30,6 +30,7 @@ local function platform_specifics()
 	configuration 'linux'
 		targetprefix ''
 		includedirs { [[/usr/include/lua5.1]] }
+		targetdir ( './Build' )
 	configuration { '*' }
 end
 
