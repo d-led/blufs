@@ -23,7 +23,10 @@ local function platform_specifics()
 	-- platform specific --
 	configuration 'macosx'
 		targetprefix ''
+		includedirs {'/usr/local/include' }
+		libdirs { '/usr/local/lib' }
 		targetextension '.so'
+		targetdir ( './BuildClang' )		
 	configuration 'windows'
 		includedirs { [[C:\luarocks\2.1\include]] , os.getenv 'BOOST' }
 		libdirs { [[C:\luarocks\2.1]] , path.join(os.getenv'BOOST',[[lib32-msvc-12.0]]) }
@@ -32,6 +35,7 @@ local function platform_specifics()
 		includedirs { [[/usr/include/lua5.1]] }
 		targetdir ( './Build' )
 	configuration { '*' }
+	make_cpp11()
 end
 
 defines { 'BOOST_NO_VARIADIC_TEMPLATES' }
@@ -50,5 +54,4 @@ links { 'luabind' , settings.links[OS] }
 make_console_app('test_blufs',{ 'test.cpp' })
 links {'luabind','blufs', settings.links[OS]}
 platform_specifics()
-make_cpp11()
 run_target_after_build()
