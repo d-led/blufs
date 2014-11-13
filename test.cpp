@@ -4,6 +4,7 @@
 #include <LuaState.h>
 
 #include <boost/filesystem.hpp>
+#include <luabind/luabind.hpp>
 
 using namespace boost::filesystem;
 
@@ -56,4 +57,23 @@ private:
 
 TEST_CASE_METHOD(LuaTest, "loading the library") {
     REQUIRE(state["blufs"].is<lua::Table>());
+}
+
+namespace {
+    struct my_exception
+    {};
+
+    void throwing_function() {
+        throw my_exception();
+    }
+}
+
+TEST_CASE_METHOD(LuaTest, "throwing inside bound functions is allowed") {
+    auto L = state.getState();
+    luabind::module(L)
+    [
+        luabind::def("throwing_function", throwing_function)
+    ];
+
+    CHECK_THROWS_AS(state.doString("throwing_function()"), lua::RuntimeError);
 }

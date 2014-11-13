@@ -21,40 +21,26 @@
 #include <iostream>
 
 namespace blufs {
-	using namespace boost::filesystem;
+    namespace fs=boost::filesystem;
 
-	bool Error(std::exception const& e) {
-		std::cerr<<"blufs error: "<<e.what()<<std::endl;
-		return false;
-	}
+    void current_path(std::string const& to_where) {
+        fs::current_path(to_where);
+    }
 
-	bool chdir(std::string const& p) {
-		try {
-			current_path(p);
-		} catch (std::exception const& e) {
-			return Error(e);
-		}
-		return true;
-	}
-
-	bool lock(std::string const& fn) {
-		try {
-			boost::interprocess::file_lock flock(fn.c_str());
-		} catch (std::exception const& e) {
-			return Error(e);
-		}
-		return true;
-	}
+    fs::path current_path() {
+        return fs::current_path();
+    }
 }
 
 void register_blufs (lua_State* L) {
-	using namespace luabind;
+    using namespace luabind;
+    using namespace blufs;
 
-	module(L, "blufs")
-	[
-		def("chdir",&blufs::chdir),
-		def("lock",&blufs::lock)
-	];
+    module(L, "blufs")
+    [
+        def("current_path", ((void(*)(std::string const&))current_path)),
+        def("current_path", ((fs::path(*)())current_path))
+    ];
 }
 
 /**
