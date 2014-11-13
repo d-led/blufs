@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{90B8A4F6-F5AA-0E45-8913-C86860BCA022}</ProjectGuid>
+    <ProjectGuid>{EB70F11B-E22D-8740-9FD9-3890D2147B4C}</ProjectGuid>
     <RootNamespace>luabind</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>

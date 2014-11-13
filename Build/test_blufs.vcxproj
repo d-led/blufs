@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{96A2C992-5DC7-414E-A9C3-019CB6F86E42}</ProjectGuid>
+    <ProjectGuid>{912080F7-E949-314E-B29D-7EE2EA09B872}</ProjectGuid>
     <RootNamespace>test_blufs</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
@@ -39,14 +39,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>..\</OutDir>
+    <OutDir>..\windows\bin\Debug\</OutDir>
     <IntDir>Debug\obj\Debug\test_blufs\</IntDir>
     <TargetName>test_blufs</TargetName>
     <TargetExt>.exe</TargetExt>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>..\</OutDir>
+    <OutDir>..\windows\bin\Release\</OutDir>
     <IntDir>Release\obj\Release\test_blufs\</IntDir>
     <TargetName>test_blufs</TargetName>
     <TargetExt>.exe</TargetExt>
@@ -56,7 +56,7 @@
     <ClCompile>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\luabind;..\Catch\single_include;..\LuaState\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\luabind;..\Catch\single_include;..\LuaState\include;C:\luarocks\2.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;_VARIADIC_MAX=10;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -70,13 +70,14 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;_VARIADIC_MAX=10;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\luabind;..\Catch\single_include;..\LuaState\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\luabind;..\Catch\single_include;..\LuaState\include;C:\luarocks\2.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>lua5.1.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)test_blufs.exe</OutputFile>
-      <AdditionalLibraryDirectories>D:\Software\boost\boost_1_56_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Software\boost\boost_1_56_0\stage\lib;C:\luarocks\2.1;D:\Software\boost\boost_1_56_0\lib32-msvc-12.0;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
     <PostBuildEvent>
@@ -87,7 +88,7 @@
     <ClCompile>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Full</Optimization>
-      <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\luabind;..\Catch\single_include;..\LuaState\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\luabind;..\Catch\single_include;..\LuaState\include;C:\luarocks\2.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>BOOST_NO_VARIADIC_TEMPLATES;RELEASE;_VARIADIC_MAX=10;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
@@ -101,15 +102,16 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>BOOST_NO_VARIADIC_TEMPLATES;RELEASE;_VARIADIC_MAX=10;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\luabind;..\Catch\single_include;..\LuaState\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\luabind;..\Catch\single_include;..\LuaState\include;C:\luarocks\2.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>lua5.1.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)test_blufs.exe</OutputFile>
-      <AdditionalLibraryDirectories>D:\Software\boost\boost_1_56_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Software\boost\boost_1_56_0\stage\lib;C:\luarocks\2.1;D:\Software\boost\boost_1_56_0\lib32-msvc-12.0;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
     <PostBuildEvent>
@@ -122,10 +124,10 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="luabind.vcxproj">
-      <Project>{90B8A4F6-F5AA-0E45-8913-C86860BCA022}</Project>
+      <Project>{EB70F11B-E22D-8740-9FD9-3890D2147B4C}</Project>
     </ProjectReference>
     <ProjectReference Include="blufs.vcxproj">
-      <Project>{41298756-C639-FB46-8FAC-B2CA2C6B44EC}</Project>
+      <Project>{3A3FA100-CFBB-394E-AAB9-3F636166027C}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

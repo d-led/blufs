@@ -47,9 +47,7 @@ platform_specifics()
 links { 'luabind' , settings.links[OS] }
 
 make_console_app('test_blufs',{ 'test.cpp' })
-links {'luabind','blufs'}
+links {'luabind','blufs', settings.links[OS]}
+platform_specifics()
 make_cpp11()
 run_target_after_build()
-
-targetdir '.'
-

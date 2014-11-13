@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{41298756-C639-FB46-8FAC-B2CA2C6B44EC}</ProjectGuid>
+    <ProjectGuid>{3A3FA100-CFBB-394E-AAB9-3F636166027C}</ProjectGuid>
     <RootNamespace>blufs</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
@@ -122,7 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="luabind.vcxproj">
-      <Project>{90B8A4F6-F5AA-0E45-8913-C86860BCA022}</Project>
+      <Project>{EB70F11B-E22D-8740-9FD9-3890D2147B4C}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
