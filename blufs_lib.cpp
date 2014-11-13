@@ -20,14 +20,10 @@
 #include <stdexcept>
 #include <iostream>
 
-namespace blufs {
-    namespace fs=boost::filesystem;
-}
+namespace fs=boost::filesystem;
 
 namespace luabind
 {
-    namespace fs = boost::filesystem;
-
     template <>
     struct default_converter<fs::path>
         : native_converter_base<fs::path>
@@ -56,7 +52,6 @@ namespace luabind
 
 void register_blufs (lua_State* L) {
     using namespace luabind;
-    using namespace blufs;
 
     open(L);
 
