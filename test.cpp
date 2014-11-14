@@ -26,7 +26,7 @@ public:
     }
 public:
     void debug(std::string expression) {
-        state.doString(std::string("print[===[") + expression + "]===]");
+        state.doString(std::string("print(") + expression + ")");
     }
 private:
     void add_lua_cpath() {
@@ -106,4 +106,9 @@ TEST_CASE_METHOD(LuaTest, "path construction and conversion") {
     }
 
     CHECK_NOTHROW(state.doString("assert(tostring(blufs.path('.')) == '\".\"')"));
+}
+
+TEST_CASE_METHOD(LuaTest, "concatenation and appends") {
+    CHECK_NOTHROW(state.doString("assert((blufs.path('.')+blufs.path('a')).generic_string=='.a')"));
+    CHECK_NOTHROW(state.doString("assert((blufs.path('.')/blufs.path('a')).generic_string=='./a')"));
 }

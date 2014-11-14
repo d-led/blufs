@@ -30,6 +30,8 @@ namespace blufs {
         path() {}
         path(path const& other) : fs::path(other) {}
         std::string get_generic_string() const { return this->generic_string(); }
+        path operator+ (path const& other) { auto res = path(*this); res += other; return res; }
+        path operator/ (path const& other) { auto res = path(*this); res /= other; return res; }
     };
 }
 
@@ -79,6 +81,8 @@ void register_blufs (lua_State* L) {
             .def(constructor<>())
             .def(constructor<blufs::path const&>())
             .def(tostring(self))
+            .def(self + blufs::path())
+            .def(self / blufs::path())
             .property("generic_string", &blufs::path::get_generic_string)
             .property("empty", &blufs::path::empty)
         ,
