@@ -18,6 +18,7 @@
 #include <luabind/luabind.hpp>
 #include <luabind/tag_function.hpp>
 #include <luabind/operator.hpp>
+#include <luabind/iterator_policy.hpp>
 #include <string>
 #include <stdexcept>
 #include <iostream>
@@ -34,6 +35,20 @@ namespace blufs {
         path operator/ (path const& other) { auto res = path(*this); res /= other; return res; }
         int compare_p(path const& other) const { return this->compare(other); }
         int compare_s(std::string const& other) const { return this->compare(other); }
+        path root_path_() const { return from(this->root_path()); }
+        path root_name_() const { return from(this->root_name()); }
+        path root_directory_() const { return from(this->root_directory()); }
+        path relative_path_() const { return from(this->relative_path()); }
+        path parent_path_() const { return from(this->parent_path()); }
+        path filename_() const { return from(this->filename()); }
+        path stem_() const { return from(this->stem()); }
+        path extension_() const { return from(this->extension()); }
+
+        static path from(fs::path const& other) {
+            path p;
+            (fs::path&)(p) = other;
+            return p;
+        }
     };
 }
 
@@ -88,8 +103,16 @@ void register_blufs (lua_State* L) {
             .def(self + std::string())
             .def(self / std::string())
             .property("generic_string", &blufs::path::get_generic_string)
+            .property("root_path", &blufs::path::root_path_)
+            .property("root_name", &blufs::path::root_name_)
+            .property("root_directory", &blufs::path::root_directory_)
+            .property("relative_path", &blufs::path::relative_path_)
+            .property("parent_path", &blufs::path::parent_path_)
+            .property("filename", &blufs::path::filename_)
+            .property("stem", &blufs::path::stem_)
+            .property("extension", &blufs::path::extension_)
             .property("empty", &blufs::path::empty)
-            .def("clear",&blufs::path::clear)
+            .def("clear", &blufs::path::clear)
             .def("make_preferred", &blufs::path::clear)
             .def("remove_filename", &blufs::path::remove_filename)
             .def("replace_extension", &blufs::path::replace_extension)

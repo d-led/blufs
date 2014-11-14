@@ -132,4 +132,12 @@ TEST_CASE_METHOD(LuaTest, "comparison") {
 }
 
 TEST_CASE_METHOD(LuaTest, "decomposition") {
+    CHECK_NOTHROW(state.doString("assert(blufs.path('//net/foo').root_path.generic_string == '//net/')"));
+    CHECK_NOTHROW(state.doString("assert(blufs.path('//net/foo').root_name.generic_string == '//net')"));
+    CHECK_NOTHROW(state.doString("assert(blufs.path('//net/foo').root_directory.generic_string == '/')"));
+    CHECK_NOTHROW(state.doString("assert(blufs.path('//net/foo').relative_path.generic_string == 'foo')"));
+    CHECK_NOTHROW(state.doString("assert(blufs.path('//net/foo').parent_path.generic_string == '//net/')"));
+    CHECK_NOTHROW(state.doString("assert(blufs.path('//net/foo').filename.generic_string == 'foo')"));
+    CHECK_NOTHROW(state.doString("assert(blufs.path('/foo/bar.txt').stem.generic_string == 'bar')"));
+    CHECK_NOTHROW(state.doString("assert(blufs.path('/foo/bar.txt').extension.generic_string == '.txt')"));
 }
