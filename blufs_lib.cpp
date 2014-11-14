@@ -83,6 +83,8 @@ void register_blufs (lua_State* L) {
             .def(tostring(self))
             .def(self + blufs::path())
             .def(self / blufs::path())
+            .def(self + std::string())
+            .def(self / std::string())
             .property("generic_string", &blufs::path::get_generic_string)
             .property("empty", &blufs::path::empty)
         ,

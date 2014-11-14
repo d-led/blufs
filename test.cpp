@@ -111,4 +111,8 @@ TEST_CASE_METHOD(LuaTest, "path construction and conversion") {
 TEST_CASE_METHOD(LuaTest, "concatenation and appends") {
     CHECK_NOTHROW(state.doString("assert((blufs.path('.')+blufs.path('a')).generic_string=='.a')"));
     CHECK_NOTHROW(state.doString("assert((blufs.path('.')/blufs.path('a')).generic_string=='./a')"));
+
+    CHECK_NOTHROW(state.doString("assert((blufs.path('.')+'a').generic_string=='.a')"));
+    CHECK_NOTHROW(state.doString("assert((blufs.path('.')/'a').generic_string=='./a')"));
 }
+
