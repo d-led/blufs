@@ -125,3 +125,11 @@ TEST_CASE_METHOD(LuaTest, "modifiers") {
     CHECK_NOTHROW(state.doString("local p=blufs.path('a/b.c'); p:replace_extension('d'); assert(p.generic_string == 'a/b.d')"));
     CHECK_NOTHROW(state.doString("local p=blufs.path('a/b.c'); p:replace_extension('.d'); assert(p.generic_string == 'a/b.d')"));
 }
+
+TEST_CASE_METHOD(LuaTest, "comparison") {
+    CHECK_NOTHROW(state.doString("assert(blufs.path('a'):compare(blufs.path('b'))==-1)"));
+    CHECK_NOTHROW(state.doString("assert(blufs.path('a'):compare('b')==-1)"));
+}
+
+TEST_CASE_METHOD(LuaTest, "decomposition") {
+}

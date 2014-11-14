@@ -32,6 +32,8 @@ namespace blufs {
         std::string get_generic_string() const { return this->generic_string(); }
         path operator+ (path const& other) { auto res = path(*this); res += other; return res; }
         path operator/ (path const& other) { auto res = path(*this); res /= other; return res; }
+        int compare_p(path const& other) const { return this->compare(other); }
+        int compare_s(std::string const& other) const { return this->compare(other); }
     };
 }
 
@@ -91,6 +93,8 @@ void register_blufs (lua_State* L) {
             .def("make_preferred", &blufs::path::clear)
             .def("remove_filename", &blufs::path::remove_filename)
             .def("replace_extension", &blufs::path::replace_extension)
+            .def("compare", &blufs::path::compare_p)
+            .def("compare", &blufs::path::compare_s)
         ,
 
         def("current_path", ((void(*)(fs::path const&))fs::current_path)),
