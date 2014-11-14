@@ -20,6 +20,7 @@ includedirs {
 }
 
 local function platform_specifics()
+	make_cpp11()
 	-- platform specific --
 	configuration 'macosx'
 		targetprefix ''
@@ -35,7 +36,6 @@ local function platform_specifics()
 		includedirs { [[/usr/include/lua5.1]] }
 		targetdir ( './Build' )
 	configuration { '*' }
-	make_cpp11()
 end
 
 defines { 'BOOST_NO_VARIADIC_TEMPLATES' }
