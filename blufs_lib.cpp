@@ -59,6 +59,7 @@ void register_blufs (lua_State* L) {
     [
         class_<fs::path>("path")
             .def(constructor<std::string const&>())
+            .property("generic_string", (std::string(fs::path::*)() const)&fs::path::generic_string)
         ,
         def("current_path", ((void(*)(fs::path const&))fs::current_path)),
         def("current_path", ((fs::path(*)())fs::current_path))
