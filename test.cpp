@@ -141,3 +141,7 @@ TEST_CASE_METHOD(LuaTest, "decomposition") {
     CHECK_NOTHROW(state.doString("assert(blufs.path('/foo/bar.txt').stem.generic_string == 'bar')"));
     CHECK_NOTHROW(state.doString("assert(blufs.path('/foo/bar.txt').extension.generic_string == '.txt')"));
 }
+
+TEST_CASE_METHOD(LuaTest, "iteration") {
+    CHECK_NOTHROW(state.doString("local n=0; for part in blufs.path('/foo/bar.txt').parts do n=n+1 end; assert(n==3)"));
+}

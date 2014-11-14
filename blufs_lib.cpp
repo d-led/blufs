@@ -19,6 +19,7 @@
 #include <luabind/tag_function.hpp>
 #include <luabind/operator.hpp>
 #include <luabind/iterator_policy.hpp>
+#include <boost/container/vector.hpp>
 #include <string>
 #include <stdexcept>
 #include <iostream>
@@ -26,13 +27,18 @@
 namespace fs = boost::filesystem;
 
 namespace blufs {
+    /// immutable!
     struct path : public fs::path {
-        path(std::string const& _) : fs::path(_){}
+        boost::container::vector<path> parts;
+        path(std::string const& _) : fs::path(_) {
+            for (auto& x : *this)
+                parts.push_back(from(x));
+        }
         path() {}
         path(path const& other) : fs::path(other) {}
         std::string get_generic_string() const { return this->generic_string(); }
-        path operator+ (path const& other) { auto res = path(*this); res += other; return res; }
-        path operator/ (path const& other) { auto res = path(*this); res /= other; return res; }
+        path operator+ (path const& other) const { auto res = path(*this); res += other; return res; }
+        path operator/ (path const& other) const { auto res = path(*this); res /= other; return res; }
         int compare_p(path const& other) const { return this->compare(other); }
         int compare_s(std::string const& other) const { return this->compare(other); }
         path root_path_() const { return from(this->root_path()); }
@@ -118,6 +124,7 @@ void register_blufs (lua_State* L) {
             .def("replace_extension", &blufs::path::replace_extension)
             .def("compare", &blufs::path::compare_p)
             .def("compare", &blufs::path::compare_s)
+            .def_readonly("parts", &blufs::path::parts, return_stl_iterator)
         ,
 
         def("current_path", ((void(*)(fs::path const&))fs::current_path)),
