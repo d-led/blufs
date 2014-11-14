@@ -24,6 +24,10 @@ public:
     ~LuaTest() {
         clean_up_test_folder();
     }
+public:
+    void debug(std::string expression) {
+        state.doString(std::string("print[===[") + expression + "]===]");
+    }
 private:
     void add_lua_cpath() {
         auto cpath =
@@ -86,4 +90,20 @@ TEST_CASE_METHOD(LuaTest, "changing and querying current directory") {
     std::string parent_dir = state["blufs"]["current_path"]();
     CHECK(absolute(current_path()) == absolute(parent_dir));
     CHECK(absolute(current_path()) != absolute(res));
+}
+
+TEST_CASE_METHOD(LuaTest, "path construction and conversion") {
+    SECTION("construct from string and path") {
+        CHECK_NOTHROW(state.doString("blufs.path'.'"));
+        CHECK_NOTHROW(state.doString("assert(blufs.path('.').generic_string == '.')"));
+        CHECK_NOTHROW(state.doString("assert(blufs.path(blufs.path('.')).generic_string == '.')"));
+    }
+
+    SECTION("empty constructor") {
+        CHECK_NOTHROW(state.doString("blufs.path()"));
+        CHECK_NOTHROW(state.doString("assert(blufs.path().empty)"));
+        CHECK_NOTHROW(state.doString("assert(not blufs.path('.').empty)"));
+    }
+
+    CHECK_NOTHROW(state.doString("assert(tostring(blufs.path('.')) == '\".\"')"));
 }
