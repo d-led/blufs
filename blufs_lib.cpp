@@ -16,11 +16,21 @@
 #include <lua.hpp>
 
 #include <luabind/luabind.hpp>
+#include <luabind/tag_function.hpp>
 #include <string>
 #include <stdexcept>
 #include <iostream>
 
-namespace fs=boost::filesystem;
+namespace fs = boost::filesystem;
+
+namespace blufs {
+    struct path : public fs::path {
+        path(std::string const& _) : fs::path(_){}
+        std::string get_generic_string() const { return this->generic_string(); }
+    };
+}
+
+
 
 namespace luabind
 {
@@ -48,6 +58,16 @@ namespace luabind
     struct default_converter<fs::path const&>
         : default_converter<fs::path>
     {};
+
+    template <>
+    struct default_converter<blufs::path>
+        : default_converter<fs::path>
+    {};
+
+    //template <>
+    //struct default_converter<blufs::path const&>
+    //    : default_converter<blufs::path>
+    //{};
 }
 
 void register_blufs (lua_State* L) {
@@ -57,10 +77,14 @@ void register_blufs (lua_State* L) {
 
     module(L, "blufs")
     [
-        class_<fs::path>("path")
-            .def(constructor<std::string const&>())
-            .property("generic_string", (std::string(fs::path::*)() const)&fs::path::generic_string)
+        class_<fs::path>("boost_path")
         ,
+
+        class_<blufs::path, fs::path>("path")
+            .def(constructor<std::string const&>())
+            .property("generic_string", &blufs::path::get_generic_string)
+        ,
+
         def("current_path", ((void(*)(fs::path const&))fs::current_path)),
         def("current_path", ((fs::path(*)())fs::current_path))
     ];
