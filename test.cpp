@@ -117,3 +117,11 @@ TEST_CASE_METHOD(LuaTest, "concatenation and appends") {
     CHECK_NOTHROW(state.doString("assert((blufs.path('.')/'a'/'a').generic_string=='./a/a')"));
 }
 
+TEST_CASE_METHOD(LuaTest, "modifiers") {
+    CHECK_NOTHROW(state.doString("local p=blufs.path('.'); p:clear(); assert(p.empty)"));
+    CHECK_NOTHROW(state.doString("blufs.path('.'):make_preferred()"));
+
+    CHECK_NOTHROW(state.doString("local p=blufs.path('a/b.c'); p:remove_filename(); assert(p.generic_string == 'a')"));
+    CHECK_NOTHROW(state.doString("local p=blufs.path('a/b.c'); p:replace_extension('d'); assert(p.generic_string == 'a/b.d')"));
+    CHECK_NOTHROW(state.doString("local p=blufs.path('a/b.c'); p:replace_extension('.d'); assert(p.generic_string == 'a/b.d')"));
+}

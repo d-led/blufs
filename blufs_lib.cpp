@@ -87,6 +87,10 @@ void register_blufs (lua_State* L) {
             .def(self / std::string())
             .property("generic_string", &blufs::path::get_generic_string)
             .property("empty", &blufs::path::empty)
+            .def("clear",&blufs::path::clear)
+            .def("make_preferred", &blufs::path::clear)
+            .def("remove_filename", &blufs::path::remove_filename)
+            .def("replace_extension", &blufs::path::replace_extension)
         ,
 
         def("current_path", ((void(*)(fs::path const&))fs::current_path)),
