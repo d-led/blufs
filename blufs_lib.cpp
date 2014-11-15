@@ -62,6 +62,7 @@ namespace blufs {
         path stem() const { return path(me.stem()); }
         path extension() const { return path(me.extension()); }
         bool empty() const { return me.empty(); }
+        bool exists() const { return fs::exists(me); }
         path absolute() const { return path(fs::absolute(me)); }
         path absolute_with_base(const path& base) { return path(fs::absolute(me,base.me)); }
         path absolute_with_base_s(const std::string & base) { return path(fs::absolute(me,base)); }
@@ -111,6 +112,7 @@ void register_blufs (lua_State* L) {
             .property("stem", &blufs::path::stem)
             .property("extension", &blufs::path::extension)
             .property("empty", &blufs::path::empty)
+            .property("exists", &blufs::path::exists)
             .def("absolute", &blufs::path::absolute)
             .def("absolute", &blufs::path::absolute_with_base)
             .def("absolute", &blufs::path::absolute_with_base_s)

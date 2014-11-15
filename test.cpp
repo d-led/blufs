@@ -178,3 +178,8 @@ TEST_CASE_METHOD(LuaTest, "operational functions") {
     CHECK_THROWS(state.doString("blufs.path'bad_guy':canonical()"));
     CHECK_NOTHROW(state.doString("blufs.path'.':canonical()"));
 }
+
+TEST_CASE_METHOD(LuaTest, "copying") {
+    bool res = state.doString("return blufs.path'.'.exists");
+    CHECK(res);
+}
