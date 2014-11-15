@@ -62,6 +62,13 @@ namespace blufs {
         path stem() const { return path(me.stem()); }
         path extension() const { return path(me.extension()); }
         bool empty() const { return me.empty(); }
+        path absolute() const { return path(fs::absolute(me)); }
+        path absolute_with_base(const path& base) { return path(fs::absolute(me,base.me)); }
+        path absolute_with_base_s(const std::string & base) { return path(fs::absolute(me,base)); }
+        path canonical() const { return path(fs::canonical(me)); }
+        path canonical_with_base(const path& base) { return path(fs::canonical(me,base.me)); }
+        path canonical_with_base_s(const std::string & base) { return path(fs::canonical(me,base)); }
+
         void make_preferred() { me.make_preferred(); }
         void clear() { me.clear(); }
         void remove_filename() { me.remove_filename(); }
@@ -104,6 +111,12 @@ void register_blufs (lua_State* L) {
             .property("stem", &blufs::path::stem)
             .property("extension", &blufs::path::extension)
             .property("empty", &blufs::path::empty)
+            .def("absolute", &blufs::path::absolute)
+            .def("absolute", &blufs::path::absolute_with_base)
+            .def("absolute", &blufs::path::absolute_with_base_s)
+            .def("canonical", &blufs::path::canonical)
+            .def("canonical", &blufs::path::canonical_with_base)
+            .def("canonical", &blufs::path::canonical_with_base_s)
             .def("clear", &blufs::path::clear)
             .def("make_preferred", &blufs::path::make_preferred)
             .def("remove_filename", &blufs::path::remove_filename)

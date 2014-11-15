@@ -165,3 +165,16 @@ TEST_CASE_METHOD(LuaTest, "enums") {
     CHECK(static_cast<int>(symlink_file) == static_cast<int>(state["blufs"]["path"]["symlink_file"]));
 }
 
+TEST_CASE_METHOD(LuaTest, "operational functions") {
+    std::string res=state.doString("return blufs.path'a':absolute().generic_string");
+    CHECK(res == absolute("a").generic_string());
+    
+    CHECK_NOTHROW(state.doString("return blufs.path'b/c':absolute(blufs.path('a')).generic_string"));
+    res = std::string(state.doString("return blufs.path'b/c':absolute('a').generic_string"));
+    CHECK(res == absolute("b/c","a").generic_string());
+
+    // same for canonical
+
+    CHECK_THROWS(state.doString("blufs.path'bad_guy':canonical()"));
+    CHECK_NOTHROW(state.doString("blufs.path'.':canonical()"));
+}
