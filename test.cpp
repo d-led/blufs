@@ -179,7 +179,14 @@ TEST_CASE_METHOD(LuaTest, "operational functions") {
     CHECK_NOTHROW(state.doString("blufs.canonical('.')"));
 }
 
-TEST_CASE_METHOD(LuaTest, "copying") {
-    bool res = state.doString("return blufs.path'.'.exists");
-    CHECK(res);
+TEST_CASE_METHOD(LuaTest, "creating directories and copying") {
+    CHECK((bool)state.doString("return blufs.path'.'.exists"));
+
+    CHECK_NOTHROW(state.doString("assert(blufs.create_directories'a/b')"));
+    CHECK((bool) state.doString("return blufs.path'./a/b'.exists"));
+    CHECK_NOTHROW(state.doString("assert(blufs.create_directory(blufs.path'c'))"));
+    
+    CHECK_NOTHROW(state.doString("blufs.copy('a','c/a')"));
+    CHECK((bool)state.doString("return blufs.path'./c/a'.exists"));
+    CHECK((bool)state.doString("return not blufs.path'./c/a/b'.exists")); //not?
 }

@@ -88,6 +88,12 @@ namespace blufs {
     static path canonical_s(std::string const& p) { return path(fs::canonical(p)); }
     static path canonical_with_base(path const& p,const path& base) { return path(fs::canonical(p.me, base.me)); }
     static path canonical_with_base_s(std::string const& p,const std::string & base) { return path(fs::canonical(p, base)); }
+    static bool create_directories(path const& p) { return fs::create_directories(p.me); }
+    static bool create_directories_s(std::string const& p) { return fs::create_directories(fs::path(p)); }
+    static bool create_directory(path const& p) { return fs::create_directory(p.me); }
+    static bool create_directory_s(std::string const& p) { return fs::create_directory(fs::path(p)); }
+    static void copy(path const& from, path const& to,int option) { fs::copy(from.me, to.me); }
+    static void copy_s(std::string const& from, std::string const& to) { fs::copy(fs::path(from), fs::path(to)); }
 
 
     std::ostream& operator<<(std::ostream& s, path const& p) {
@@ -199,6 +205,12 @@ void register_blufs (lua_State* L) {
         def("current_path", blufs::set_current_path),
         def("current_path", blufs::set_current_path_s),
         def("current_path", blufs::get_current_path),
+        def("create_directories", blufs::create_directories),
+        def("create_directories", blufs::create_directories_s),
+        def("create_directory", blufs::create_directory),
+        def("create_directory", blufs::create_directory_s),
+        def("copy", blufs::copy),
+        def("copy", blufs::copy_s),
         def("absolute", &blufs::absolute),
         def("absolute", &blufs::absolute_s),
         def("absolute", &blufs::absolute_with_base),
