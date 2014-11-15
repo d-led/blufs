@@ -80,6 +80,15 @@ namespace blufs {
     static path get_current_path() { return path(fs::current_path()); }
     static void set_current_path(path const& p) { fs::current_path(p.me); }
     static void set_current_path_s(std::string const& p) { fs::current_path(p); }
+    static path absolute(path const& p) { return path(fs::absolute(p.me)); }
+    static path absolute_s(std::string const& p) { return path(fs::absolute(p)); }
+    static path absolute_with_base(path const& p,const path& base) { return path(fs::absolute(p.me, base.me)); }
+    static path absolute_with_base_s(std::string const& p,const std::string & base) { return path(fs::absolute(p, base)); }
+    static path canonical(path const& p) { return path(fs::canonical(p.me)); }
+    static path canonical_s(std::string const& p) { return path(fs::canonical(p)); }
+    static path canonical_with_base(path const& p,const path& base) { return path(fs::canonical(p.me, base.me)); }
+    static path canonical_with_base_s(std::string const& p,const std::string & base) { return path(fs::canonical(p, base)); }
+
 
     std::ostream& operator<<(std::ostream& s, path const& p) {
         return s << p.generic_string();
@@ -113,12 +122,6 @@ void register_blufs (lua_State* L) {
             .property("extension", &blufs::path::extension)
             .property("empty", &blufs::path::empty)
             .property("exists", &blufs::path::exists)
-            .def("absolute", &blufs::path::absolute)
-            .def("absolute", &blufs::path::absolute_with_base)
-            .def("absolute", &blufs::path::absolute_with_base_s)
-            .def("canonical", &blufs::path::canonical)
-            .def("canonical", &blufs::path::canonical_with_base)
-            .def("canonical", &blufs::path::canonical_with_base_s)
             .def("clear", &blufs::path::clear)
             .def("make_preferred", &blufs::path::make_preferred)
             .def("remove_filename", &blufs::path::remove_filename)
@@ -195,7 +198,15 @@ void register_blufs (lua_State* L) {
 
         def("current_path", blufs::set_current_path),
         def("current_path", blufs::set_current_path_s),
-        def("current_path", blufs::get_current_path)
+        def("current_path", blufs::get_current_path),
+        def("absolute", &blufs::absolute),
+        def("absolute", &blufs::absolute_s),
+        def("absolute", &blufs::absolute_with_base),
+        def("absolute", &blufs::absolute_with_base_s),
+        def("canonical", &blufs::canonical),
+        def("canonical", &blufs::canonical_s),
+        def("canonical", &blufs::canonical_with_base),
+        def("canonical", &blufs::canonical_with_base_s)
     ];
 }
 

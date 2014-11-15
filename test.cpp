@@ -166,17 +166,17 @@ TEST_CASE_METHOD(LuaTest, "enums") {
 }
 
 TEST_CASE_METHOD(LuaTest, "operational functions") {
-    std::string res=state.doString("return blufs.path'a':absolute().generic_string");
+    std::string res=state.doString("return blufs.absolute(blufs.path'a').generic_string");
     CHECK(res == absolute("a").generic_string());
     
-    CHECK_NOTHROW(state.doString("return blufs.path'b/c':absolute(blufs.path('a')).generic_string"));
-    std::string res2 = state.doString("return blufs.path'b/c':absolute('a').generic_string");
+    CHECK_NOTHROW(state.doString("return blufs.absolute(blufs.path'b/c',blufs.path('a')).generic_string"));
+    std::string res2 = state.doString("return blufs.absolute('b/c','a').generic_string");
     CHECK(res2 == absolute("b/c","a").generic_string());
 
     // same for canonical
 
-    CHECK_THROWS(state.doString("blufs.path'bad_guy':canonical()"));
-    CHECK_NOTHROW(state.doString("blufs.path'.':canonical()"));
+    CHECK_THROWS(state.doString("blufs.canonical('bad_guy')"));
+    CHECK_NOTHROW(state.doString("blufs.canonical('.')"));
 }
 
 TEST_CASE_METHOD(LuaTest, "copying") {
