@@ -27,65 +27,55 @@
 namespace fs = boost::filesystem;
 
 namespace blufs {
-    /// immutable!
-    struct path : public fs::path {
+
+    struct path {
+        fs::path me;
         boost::container::vector<path> parts;
-        path(std::string const& _) : fs::path(_) {
-            for (auto& x : *this)
-                parts.push_back(from(x));
+        void update_parts() {
+            parts.clear();
+            for (auto& x : me)
+                parts.push_back(path(x));
         }
+        
+        boost::container::vector<path> const& get_parts() {
+            update_parts();
+            return parts;
+        }
+
+        explicit path(std::string const& p) : me(p) { }
         path() {}
-        path(path const& other) : fs::path(other) {}
-        std::string get_generic_string() const { return this->generic_string(); }
-        path operator+ (path const& other) const { auto res = path(*this); res += other; return res; }
-        path operator/ (path const& other) const { auto res = path(*this); res /= other; return res; }
-        int compare_p(path const& other) const { return this->compare(other); }
-        int compare_s(std::string const& other) const { return this->compare(other); }
-        path root_path_() const { return from(this->root_path()); }
-        path root_name_() const { return from(this->root_name()); }
-        path root_directory_() const { return from(this->root_directory()); }
-        path relative_path_() const { return from(this->relative_path()); }
-        path parent_path_() const { return from(this->parent_path()); }
-        path filename_() const { return from(this->filename()); }
-        path stem_() const { return from(this->stem()); }
-        path extension_() const { return from(this->extension()); }
-
-        static path from(fs::path const& other) {
-            path p;
-            (fs::path&)(p) = other;
-            return p;
-        }
-    };
-}
-
-
-
-namespace luabind
-{
-    template <>
-    struct default_converter<fs::path>
-        : native_converter_base<fs::path>
-    {
-        static int compute_score(lua_State* L, int index)
-        {
-            return lua_type(L, index) == LUA_TSTRING ? 0 : -1;
-        }
-
-        fs::path from(lua_State* L, int index)
-        {
-            return fs::path(lua_tostring(L, index));
-        }
-
-        void to(lua_State* L, fs::path const& x)
-        {
-            lua_pushstring(L, x.generic_string().c_str());
-        }
+        path(path const& other) : me(other.me) {  }
+        explicit path(fs::path const& other) : me(other) {  }
+        std::string generic_string() const { return me.generic_string(); }
+        path operator+ (std::string const& other) const { fs::path res(me); res += other; return path(res); }
+        path operator+ (path const& other) const { fs::path res(me); res += other.me; return path(res); }
+        path operator/ (std::string const& other) const { fs::path res(me); res /= other; return path(res); }
+        path operator/ (path const& other) const { fs::path res(me); res /= other.me; return path(res); }
+        int compare_p(path const& other) const { return me.compare(other.me); }
+        int compare_s(std::string const& other) const { return me.compare(other); }
+        path root_path() const { return path(me.root_path()); }
+        path root_name() const { return path(me.root_name()); }
+        path root_directory() const { return path(me.root_directory()); }
+        path relative_path() const { return path(me.relative_path()); }
+        path parent_path() const { return path(me.parent_path()); }
+        path filename() const { return path(me.filename()); }
+        path stem() const { return path(me.stem()); }
+        path extension() const { return path(me.extension()); }
+        bool empty() const { return me.empty(); }
+        void make_preferred() { me.make_preferred(); }
+        void clear() { me.clear(); }
+        void remove_filename() { me.remove_filename(); }
+        void replace_extension(path const& e) { me.replace_extension(e.me); }
+        void replace_extension_s(std::string const& e) { me.replace_extension(e); }
     };
 
-    template <>
-    struct default_converter<fs::path const&>
-        : default_converter<fs::path>
-    {};
+    static path get_current_path() { return path(fs::current_path()); }
+    static void set_current_path(path const& p) { fs::current_path(p.me); }
+    static void set_current_path_s(std::string const& p) { fs::current_path(p); }
+
+    std::ostream& operator<<(std::ostream& s, path const& p) {
+        return s << p.generic_string();
+    }
 }
 
 void register_blufs (lua_State* L) {
@@ -95,11 +85,7 @@ void register_blufs (lua_State* L) {
 
     module(L, "blufs")
     [
-        class_<fs::path>("boost_path")
-            .def(tostring(self))
-        ,
-
-        class_<blufs::path, fs::path>("path")
+        class_<blufs::path>("path")
             .def(constructor<std::string const&>())
             .def(constructor<>())
             .def(constructor<blufs::path const&>())
@@ -108,27 +94,29 @@ void register_blufs (lua_State* L) {
             .def(self / blufs::path())
             .def(self + std::string())
             .def(self / std::string())
-            .property("generic_string", &blufs::path::get_generic_string)
-            .property("root_path", &blufs::path::root_path_)
-            .property("root_name", &blufs::path::root_name_)
-            .property("root_directory", &blufs::path::root_directory_)
-            .property("relative_path", &blufs::path::relative_path_)
-            .property("parent_path", &blufs::path::parent_path_)
-            .property("filename", &blufs::path::filename_)
-            .property("stem", &blufs::path::stem_)
-            .property("extension", &blufs::path::extension_)
+            .property("generic_string", &blufs::path::generic_string)
+            .property("root_path", &blufs::path::root_path)
+            .property("root_name", &blufs::path::root_name)
+            .property("root_directory", &blufs::path::root_directory)
+            .property("relative_path", &blufs::path::relative_path)
+            .property("parent_path", &blufs::path::parent_path)
+            .property("filename", &blufs::path::filename)
+            .property("stem", &blufs::path::stem)
+            .property("extension", &blufs::path::extension)
             .property("empty", &blufs::path::empty)
             .def("clear", &blufs::path::clear)
-            .def("make_preferred", &blufs::path::clear)
+            .def("make_preferred", &blufs::path::make_preferred)
             .def("remove_filename", &blufs::path::remove_filename)
             .def("replace_extension", &blufs::path::replace_extension)
+            .def("replace_extension", &blufs::path::replace_extension_s)
             .def("compare", &blufs::path::compare_p)
             .def("compare", &blufs::path::compare_s)
-            .def_readonly("parts", &blufs::path::parts, return_stl_iterator)
+            .def_readonly("parts", &blufs::path::get_parts, return_stl_iterator)
         ,
 
-        def("current_path", ((void(*)(fs::path const&))fs::current_path)),
-        def("current_path", ((fs::path(*)())fs::current_path))
+        def("current_path", blufs::set_current_path),
+        def("current_path", blufs::set_current_path_s),
+        def("current_path", blufs::get_current_path)
     ];
 }
 

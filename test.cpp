@@ -83,11 +83,11 @@ TEST_CASE_METHOD(LuaTest, "throwing inside bound functions is allowed") {
 }
 
 TEST_CASE_METHOD(LuaTest, "changing and querying current directory") {
-    std::string res = state["blufs"]["current_path"]();
+    std::string res = state.doString("return blufs.current_path().generic_string");
     CHECK(res == current_path().generic_string());
 
     state.doString("blufs.current_path('..')");
-    std::string parent_dir = state["blufs"]["current_path"]();
+    std::string parent_dir = state.doString("return blufs.current_path().generic_string");
     CHECK(absolute(current_path()) == absolute(parent_dir));
     CHECK(absolute(current_path()) != absolute(res));
 }
@@ -105,7 +105,7 @@ TEST_CASE_METHOD(LuaTest, "path construction and conversion") {
         CHECK_NOTHROW(state.doString("assert(not blufs.path('.').empty)"));
     }
 
-    CHECK_NOTHROW(state.doString("assert(tostring(blufs.path('.')) == '\".\"')"));
+    CHECK_NOTHROW(state.doString("assert(tostring(blufs.path('.')) == '.')"));
 }
 
 TEST_CASE_METHOD(LuaTest, "concatenation and appends") {
@@ -123,7 +123,7 @@ TEST_CASE_METHOD(LuaTest, "modifiers") {
 
     CHECK_NOTHROW(state.doString("local p=blufs.path('a/b.c'); p:remove_filename(); assert(p.generic_string == 'a')"));
     CHECK_NOTHROW(state.doString("local p=blufs.path('a/b.c'); p:replace_extension('d'); assert(p.generic_string == 'a/b.d')"));
-    CHECK_NOTHROW(state.doString("local p=blufs.path('a/b.c'); p:replace_extension('.d'); assert(p.generic_string == 'a/b.d')"));
+    CHECK_NOTHROW(state.doString("local p=blufs.path('a/b.c'); p:replace_extension(blufs.path'.d'); assert(p.generic_string == 'a/b.d')"));
 }
 
 TEST_CASE_METHOD(LuaTest, "comparison") {
