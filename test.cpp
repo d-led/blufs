@@ -159,3 +159,9 @@ TEST_CASE_METHOD(LuaTest, "iteration") {
             ));
     }
 }
+
+TEST_CASE_METHOD(LuaTest, "enums") {
+    // see boost filesystem docs
+    CHECK(static_cast<int>(symlink_file) == static_cast<int>(state["blufs"]["path"]["symlink_file"]));
+}
+

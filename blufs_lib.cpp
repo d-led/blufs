@@ -112,6 +112,70 @@ void register_blufs (lua_State* L) {
             .def("compare", &blufs::path::compare_p)
             .def("compare", &blufs::path::compare_s)
             .def_readonly("parts", &blufs::path::get_parts, return_stl_iterator)
+
+            .enum_("file_type")
+            [
+                value("status_error", fs::status_error),
+                value("file_not_found", fs::file_not_found),
+                value("regular_file", fs::regular_file),
+                value("directory_file", fs::directory_file),
+                value("symlink_file", fs::symlink_file),
+                value("block_file", fs::block_file),
+                value("character_file", fs::character_file),
+                value("fifo_file", fs::fifo_file),
+                value("socket_file", fs::socket_file),
+                value("type_unknown", fs::type_unknown)
+            ]
+
+            .enum_("perms")
+            [
+                value("no_perms", fs::no_perms),
+                value("owner_read", fs::owner_read),
+                value("owner_write", fs::owner_write),
+                value("owner_exe", fs::owner_exe),
+                value("owner_all", fs::owner_all),
+                value("group_read", fs::group_read),
+                value("group_write", fs::group_write),
+                value("group_exe", fs::group_exe),
+                value("group_all", fs::group_all),
+                value("others_read", fs::others_read),
+                value("others_write", fs::others_write),
+                value("others_exe", fs::others_exe),
+                value("others_all", fs::others_all),
+                value("all_all", fs::all_all),
+                value("set_uid_on_exe", fs::set_uid_on_exe),
+                value("set_gid_on_exe", fs::set_gid_on_exe),
+                value("sticky_bit", fs::sticky_bit),
+                value("perms_mask", fs::perms_mask),
+                value("perms_not_known", fs::perms_not_known),
+                value("add_perms", fs::add_perms),
+                value("remove_perms", fs::remove_perms),
+                value("symlink_perms", fs::symlink_perms)
+            ]
+        ,
+
+        class_<fs::space_info>("space_info")
+            .def_readwrite("capacity", &fs::space_info::capacity)
+            .def_readwrite("free", &fs::space_info::free)
+            .def_readwrite("available", &fs::space_info::available)
+        ,
+
+        class_<fs::copy_option>("copy_option")
+            .enum_("values")
+            [
+                value("none",static_cast<int>(fs::copy_option::none)),
+                value("fail_if_exists", static_cast<int>(fs::copy_option::fail_if_exists)),
+                value("overwrite_if_exists", static_cast<int>(fs::copy_option::overwrite_if_exists))
+            ]
+        ,
+
+        class_<fs::symlink_option>("symlink_option")
+            .enum_("values")
+            [
+                value("none", static_cast<int>(fs::symlink_option::none)),
+                value("no_recurse", static_cast<int>(fs::symlink_option::no_recurse)),
+                value("recurse", static_cast<int>(fs::symlink_option::recurse))
+            ]
         ,
 
         def("current_path", blufs::set_current_path),
