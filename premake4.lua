@@ -21,7 +21,7 @@ includedirs {
 }
 
 local function platform_specifics()
-	make_cpp11()
+	use_standard 'c++0x'
 end
 
 make_static_lib('luabind',{'./deps/luabind/src/*.cpp'})
