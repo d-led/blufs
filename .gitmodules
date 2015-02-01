@@ -2,10 +2,10 @@
 	path = premake
 	url = https://github.com/d-led/premake-meta-cpp.git
 [submodule "luabind"]
-	path = luabind
+	path = deps/luabind
 	url = https://github.com/DennisOSRM/luabind.git
 [submodule "LuaState"]
-	path = LuaState
+	path = deps/LuaState
 	url = https://github.com/AdUki/LuaState.git
 [submodule "Catch"]
 	path = deps/Catch
