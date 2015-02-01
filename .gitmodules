@@ -8,5 +8,5 @@
 	path = LuaState
 	url = https://github.com/AdUki/LuaState.git
 [submodule "Catch"]
-	path = Catch
+	path = deps/Catch
 	url = https://github.com/philsquared/Catch.git
