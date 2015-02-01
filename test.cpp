@@ -1,12 +1,21 @@
-#define CATCH_CONFIG_MAIN
+#define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
 
-#include <LuaState.h>
-
 #include <boost/filesystem.hpp>
+#include <LuaState.h>
 #include <luabind/luabind.hpp>
 
 using namespace boost::filesystem;
+
+namespace {
+    path executable_path;
+}
+
+int main(int argc, char* const argv[])
+{
+    executable_path = system_complete(path(argv[0]).parent_path());
+    return Catch::Session().run(argc, argv);
+}
 
 class LuaTest {
 protected:
@@ -32,8 +41,8 @@ private:
     void add_lua_cpath() {
         auto cpath =
             std::string("package.cpath=[[")
-            + (current_path() / path("?.dll")).generic_string() + ";"
-            + (current_path() / path("?.so")).generic_string() + ";"
+            + (executable_path / path("?.dll")).generic_string() + ";"
+            + (executable_path / path("?.so")).generic_string() + ";"
             + "]] ..package.cpath";
         state.doString(cpath);
     }
