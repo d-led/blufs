@@ -3,7 +3,7 @@
 	url = https://github.com/d-led/premake-meta-cpp.git
 [submodule "luabind"]
 	path = deps/luabind
-	url = https://github.com/DennisOSRM/luabind.git
+	url = https://github.com/rpavlik/luabind.git
 [submodule "LuaState"]
 	path = deps/LuaState
 	url = https://github.com/AdUki/LuaState.git
