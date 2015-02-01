@@ -26,7 +26,7 @@ ifeq ($(config),debug32)
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG
   INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32 -std=c++0x
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake/x32/Debug -L. -m32 -L/usr/lib32
@@ -50,7 +50,7 @@ ifeq ($(config),release32)
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE
   INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32 -std=c++0x
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake/x32/Release -L. -s -m32 -L/usr/lib32
@@ -74,7 +74,7 @@ ifeq ($(config),*32)
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES
   INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m32 -std=c++0x
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m32 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake -L. -s -m32 -L/usr/lib32
@@ -98,7 +98,7 @@ ifeq ($(config),*32)
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES
   INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m32 -std=c++0x
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m32 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake -L. -s -m32 -L/usr/lib32
@@ -122,7 +122,7 @@ ifeq ($(config),debug64)
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG
   INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64 -std=c++0x
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake/x64/Debug -L. -m64 -L/usr/lib64
@@ -146,7 +146,7 @@ ifeq ($(config),release64)
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE
   INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64 -std=c++0x
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake/x64/Release -L. -s -m64 -L/usr/lib64
@@ -170,7 +170,7 @@ ifeq ($(config),*64)
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES
   INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m64 -std=c++0x
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m64 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake -L. -s -m64 -L/usr/lib64
@@ -194,7 +194,7 @@ ifeq ($(config),*64)
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES
   INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m64 -std=c++0x
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m64 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake -L. -s -m64 -L/usr/lib64
@@ -218,7 +218,7 @@ ifeq ($(config),debug)
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG
   INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -std=c++0x
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake -L.
@@ -242,7 +242,7 @@ ifeq ($(config),release)
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE
   INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -std=c++0x
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake -L. -s
@@ -266,7 +266,7 @@ ifeq ($(config),*)
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES
   INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -std=c++0x
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake -L. -s
@@ -290,7 +290,7 @@ ifeq ($(config),*)
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES
   INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -std=c++0x
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake -L. -s
