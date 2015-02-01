@@ -27,6 +27,6 @@ testing using:
 license
 =======
 
-Copyright 2013-2014 Dmitry Ledentsov
+Copyright 2013-2015 Dmitry Ledentsov
 
 [MIT License](http://opensource.org/licenses/MIT)
