@@ -18,7 +18,7 @@ function get_local_lua()
 		set_links = function()
 			links 'lua5.3'
 		end,
-		generate_build = function()
+		generate_build = function(self)
 			make_shared_lib('lua5.3',{
 				path.join(lua_dir,'src','*.h'),
 				path.join(lua_dir,'src','*.c')
@@ -33,18 +33,13 @@ function get_local_lua()
 				targetextension '.so'
 		 	configuration '*'
 		 	targetprefix ''
-
-			make_console_app('lufs',{
-				path.join(lua_dir,'src','lua.c')
-			})
-			links 'lua5.3'
 		end
 	}
 end
 
 boost = assert(dofile 'premake/recipes/boost.lua')
 
----- SOLUTION -------
+--== SOLUTION ==-----
 make_solution 'blufs'
 
 local local_lua = true
@@ -70,14 +65,16 @@ else
 end
 lua:set_includedirs()
 lua:set_libdirs()
-lua.generate_build()
+lua:generate_build()
 
+-----------------LUABIND-------------------------------
 make_static_lib('luabind',{'./deps/luabind/src/*.cpp'})
 platform_specifics()
 
+-----------------BLUFS----
 make_shared_lib('blufs', {
-	'blufs.cpp',
-	'blufs_lib.cpp'
+	'src/blufs.cpp',
+	'src/blufs_lib.cpp'
 })
 links { 'luabind' }
 platform_specifics()
@@ -93,10 +90,21 @@ configuration '*'
 boost:set_links()
 lua:set_links()
 
+------------------LUFS---
+make_console_app('lufs',{
+	'src/customizable_lua.c',
+	'src/blufs_lib.cpp',
+	'src/lufs_init.cpp'
+})
+lua:set_links()
+links {'luabind'}
+defines {
+	'open_custom_libs=lufs_init'
+}
+platform_specifics()
 
-
-
-make_console_app('test_blufs',{ 'test.cpp' })
+------------------TEST---------------------------
+make_console_app('test_blufs',{ 'src/test.cpp' })
 links {'luabind', 'blufs' }
 defines 'LUA_COMPAT_APIINTCASTS'
 boost:set_links()

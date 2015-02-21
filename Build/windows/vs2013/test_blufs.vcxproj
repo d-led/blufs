@@ -293,7 +293,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\test.cpp" />
+    <ClCompile Include="..\..\..\src\test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="luabind.vcxproj">

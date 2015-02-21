@@ -275,8 +275,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\blufs.cpp" />
-    <ClCompile Include="..\..\..\blufs_lib.cpp" />
+    <ClCompile Include="..\..\..\src\blufs.cpp" />
+    <ClCompile Include="..\..\..\src\blufs_lib.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="luabind.vcxproj">

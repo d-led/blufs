@@ -145,13 +145,13 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;open_custom_libs=lufs_init;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;open_custom_libs=lufs_init;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
@@ -165,13 +165,13 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;open_custom_libs=lufs_init;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;open_custom_libs=lufs_init;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
@@ -185,13 +185,13 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;open_custom_libs=lufs_init;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;open_custom_libs=lufs_init;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
@@ -204,7 +204,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;open_custom_libs=lufs_init;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -213,7 +213,7 @@
       <StringPooling>true</StringPooling>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;open_custom_libs=lufs_init;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
@@ -229,7 +229,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;open_custom_libs=lufs_init;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -238,7 +238,7 @@
       <StringPooling>true</StringPooling>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;open_custom_libs=lufs_init;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
@@ -254,7 +254,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;open_custom_libs=lufs_init;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -263,7 +263,7 @@
       <StringPooling>true</StringPooling>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;open_custom_libs=lufs_init;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
@@ -275,11 +275,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\deps\lua\lua-5.3.0\src\lua.c" />
+    <ClCompile Include="..\..\..\src\blufs_lib.cpp" />
+    <ClCompile Include="..\..\..\src\customizable_lua.c" />
+    <ClCompile Include="..\..\..\src\lufs_init.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="lua5.3.vcxproj">
       <Project>{FD73470C-E915-72E2-D2D0-8536BE11F932}</Project>
+    </ProjectReference>
+    <ProjectReference Include="luabind.vcxproj">
+      <Project>{A4A34F95-1083-CE30-199B-590785F93492}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
