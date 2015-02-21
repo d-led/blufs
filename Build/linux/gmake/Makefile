@@ -6,27 +6,37 @@ ifndef config
 endif
 export config
 
-PROJECTS := luabind blufs test_blufs
+PROJECTS := lua5.3 luabind blufs lufs test_blufs
 
 .PHONY: all clean help $(PROJECTS)
 
 all: $(PROJECTS)
 
+lua5.3: 
+	@echo "==== Building lua5.3 ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f lua5.3.make
+
 luabind: 
 	@echo "==== Building luabind ($(config)) ===="
 	@${MAKE} --no-print-directory -C . -f luabind.make
 
-blufs: luabind
+blufs: luabind lua5.3
 	@echo "==== Building blufs ($(config)) ===="
 	@${MAKE} --no-print-directory -C . -f blufs.make
 
-test_blufs: luabind blufs
+lufs: lua5.3 luabind
+	@echo "==== Building lufs ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f lufs.make
+
+test_blufs: luabind blufs lua5.3
 	@echo "==== Building test_blufs ($(config)) ===="
 	@${MAKE} --no-print-directory -C . -f test_blufs.make
 
 clean:
+	@${MAKE} --no-print-directory -C . -f lua5.3.make clean
 	@${MAKE} --no-print-directory -C . -f luabind.make clean
 	@${MAKE} --no-print-directory -C . -f blufs.make clean
+	@${MAKE} --no-print-directory -C . -f lufs.make clean
 	@${MAKE} --no-print-directory -C . -f test_blufs.make clean
 
 help:
@@ -35,22 +45,18 @@ help:
 	@echo "CONFIGURATIONS:"
 	@echo "   debug32"
 	@echo "   release32"
-	@echo "   *32"
-	@echo "   *32"
 	@echo "   debug64"
 	@echo "   release64"
-	@echo "   *64"
-	@echo "   *64"
 	@echo "   debug"
 	@echo "   release"
-	@echo "   *"
-	@echo "   *"
 	@echo ""
 	@echo "TARGETS:"
 	@echo "   all (default)"
 	@echo "   clean"
+	@echo "   lua5.3"
 	@echo "   luabind"
 	@echo "   blufs"
+	@echo "   lufs"
 	@echo "   test_blufs"
 	@echo ""
 	@echo "For more information, see http://industriousone.com/premake/quick-start"

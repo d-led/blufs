@@ -7,6 +7,14 @@ local function platform_specifics()
 	configuration '*'
 end
 
+local function link_additional_boost_libs()
+	configuration 'linux'
+	links { 'boost_filesystem', 'dl', 'pthread' }
+	configuration 'macosx'
+		links 'boost_filesystem'
+	configuration '*'
+end
+
 function get_local_lua()
 	local lua_dir = './deps/lua/lua-5.3.0'
 	
@@ -97,7 +105,11 @@ make_console_app('lufs',{
 	'src/lufs_init.cpp'
 })
 lua:set_links()
-links {'luabind'}
+boost:set_links()
+links {
+	'luabind'
+}
+link_additional_boost_libs()
 defines {
 	'open_custom_libs=lufs_init'
 }
@@ -111,9 +123,4 @@ boost:set_links()
 lua:set_links()
 platform_specifics()
 run_target_after_build()
-
-configuration 'linux'
-	links { 'boost_filesystem', 'dl', 'pthread' }
-configuration 'macosx'
-	links 'boost_filesystem'
-configuration '*'
+link_additional_boost_libs()

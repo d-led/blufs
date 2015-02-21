@@ -24,7 +24,7 @@ ifeq ($(config),debug32)
   TARGETDIR  = ../../../bin/linux/gmake/x32/Debug
   TARGET     = $(TARGETDIR)/libluabind.a
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG
-  INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
+  INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
@@ -46,53 +46,9 @@ ifeq ($(config),release32)
   TARGETDIR  = ../../../bin/linux/gmake/x32/Release
   TARGET     = $(TARGETDIR)/libluabind.a
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE
-  INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
+  INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32 -std=c++0x -fPIC
-  ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
-  ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -s -m32 -L/usr/lib32
-  LDDEPS    +=
-  LIBS      += $(LDDEPS)
-  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
-  define PREBUILDCMDS
-  endef
-  define PRELINKCMDS
-  endef
-  define POSTBUILDCMDS
-  endef
-endif
-
-ifeq ($(config),*32)
-  OBJDIR     = ../../../obj/linux/gmake/luabind/x32
-  TARGETDIR  = ../../../bin/linux/gmake
-  TARGET     = $(TARGETDIR)/libluabind.a
-  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES
-  INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
-  ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m32 -std=c++0x -fPIC
-  ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
-  ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -s -m32 -L/usr/lib32
-  LDDEPS    +=
-  LIBS      += $(LDDEPS)
-  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
-  define PREBUILDCMDS
-  endef
-  define PRELINKCMDS
-  endef
-  define POSTBUILDCMDS
-  endef
-endif
-
-ifeq ($(config),*32)
-  OBJDIR     = ../../../obj/linux/gmake/luabind/x32
-  TARGETDIR  = ../../../bin/linux/gmake
-  TARGET     = $(TARGETDIR)/libluabind.a
-  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES
-  INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
-  ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m32 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -s -m32 -L/usr/lib32
@@ -112,7 +68,7 @@ ifeq ($(config),debug64)
   TARGETDIR  = ../../../bin/linux/gmake/x64/Debug
   TARGET     = $(TARGETDIR)/libluabind.a
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG
-  INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
+  INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
@@ -134,53 +90,9 @@ ifeq ($(config),release64)
   TARGETDIR  = ../../../bin/linux/gmake/x64/Release
   TARGET     = $(TARGETDIR)/libluabind.a
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE
-  INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
+  INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64 -std=c++0x -fPIC
-  ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
-  ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -s -m64 -L/usr/lib64
-  LDDEPS    +=
-  LIBS      += $(LDDEPS)
-  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
-  define PREBUILDCMDS
-  endef
-  define PRELINKCMDS
-  endef
-  define POSTBUILDCMDS
-  endef
-endif
-
-ifeq ($(config),*64)
-  OBJDIR     = ../../../obj/linux/gmake/luabind/x64
-  TARGETDIR  = ../../../bin/linux/gmake
-  TARGET     = $(TARGETDIR)/libluabind.a
-  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES
-  INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
-  ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m64 -std=c++0x -fPIC
-  ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
-  ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -s -m64 -L/usr/lib64
-  LDDEPS    +=
-  LIBS      += $(LDDEPS)
-  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
-  define PREBUILDCMDS
-  endef
-  define PRELINKCMDS
-  endef
-  define POSTBUILDCMDS
-  endef
-endif
-
-ifeq ($(config),*64)
-  OBJDIR     = ../../../obj/linux/gmake/luabind/x64
-  TARGETDIR  = ../../../bin/linux/gmake
-  TARGET     = $(TARGETDIR)/libluabind.a
-  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES
-  INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
-  ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m64 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -s -m64 -L/usr/lib64
@@ -200,7 +112,7 @@ ifeq ($(config),debug)
   TARGETDIR  = ../../../bin/linux/gmake
   TARGET     = $(TARGETDIR)/libluabind.a
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG
-  INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
+  INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
@@ -222,53 +134,9 @@ ifeq ($(config),release)
   TARGETDIR  = ../../../bin/linux/gmake
   TARGET     = $(TARGETDIR)/libluabind.a
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE
-  INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
+  INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -std=c++0x -fPIC
-  ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
-  ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -s
-  LDDEPS    +=
-  LIBS      += $(LDDEPS)
-  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
-  define PREBUILDCMDS
-  endef
-  define PRELINKCMDS
-  endef
-  define POSTBUILDCMDS
-  endef
-endif
-
-ifeq ($(config),*)
-  OBJDIR     = ../../../obj/linux/gmake/luabind/*
-  TARGETDIR  = ../../../bin/linux/gmake
-  TARGET     = $(TARGETDIR)/libluabind.a
-  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES
-  INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
-  ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -std=c++0x -fPIC
-  ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
-  ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -s
-  LDDEPS    +=
-  LIBS      += $(LDDEPS)
-  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
-  define PREBUILDCMDS
-  endef
-  define PRELINKCMDS
-  endef
-  define POSTBUILDCMDS
-  endef
-endif
-
-ifeq ($(config),*)
-  OBJDIR     = ../../../obj/linux/gmake/luabind/*
-  TARGETDIR  = ../../../bin/linux/gmake
-  TARGET     = $(TARGETDIR)/libluabind.a
-  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES
-  INCLUDES  += -I/usr/include/lua5.1 -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include
-  ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -s
