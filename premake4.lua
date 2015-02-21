@@ -36,6 +36,7 @@ function get_local_lua()
 				path.join(lua_dir,'src','*.h'),
 				path.join(lua_dir,'src','*.c')
 			})
+			platform_specifics()
 			excludes { 
 				path.join(lua_dir,'src','lua.c'),
 				path.join(lua_dir,'src','luac.c')

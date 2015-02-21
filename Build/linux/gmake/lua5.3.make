@@ -26,7 +26,7 @@ ifeq ($(config),debug32)
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG -DLUA_USE_LINUX
   INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -m32 -L/usr/lib32
@@ -48,7 +48,7 @@ ifeq ($(config),release32)
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE -DLUA_USE_LINUX
   INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -s -m32 -L/usr/lib32
@@ -70,7 +70,7 @@ ifeq ($(config),debug64)
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG -DLUA_USE_LINUX
   INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -m64 -L/usr/lib64
@@ -92,7 +92,7 @@ ifeq ($(config),release64)
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE -DLUA_USE_LINUX
   INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -s -m64 -L/usr/lib64
@@ -114,7 +114,7 @@ ifeq ($(config),debug)
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG -DLUA_USE_LINUX
   INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS)
@@ -136,7 +136,7 @@ ifeq ($(config),release)
   DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE -DLUA_USE_LINUX
   INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -s
