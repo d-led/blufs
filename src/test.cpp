@@ -151,23 +151,14 @@ TEST_CASE_METHOD(LuaTest, "decomposition") {
     CHECK_NOTHROW(state.doString("assert(blufs.path('/foo/bar.txt').extension.generic_string == '.txt')"));
 }
 
-//TEST_CASE_METHOD(LuaTest, "iteration") {
-//    CHECK_NOTHROW(state.doString(
-//        "local n=0; "
-//        "for part in blufs.path('/foo/bar.txt').parts do n=n+1 end; "
-//        "assert(n==3)"
-//        "for part in blufs.path('/foo/bar.txt').parts do n=n+1 end; "
-//        "assert(n==6)"));
-//
-//    SECTION("modification during iteration is ok: iterator is immutable") {
-//        CHECK_NOTHROW(state.doString(
-//            "local n=0; "
-//            "local p=blufs.path'a/b/c'; "
-//            "for part in p.parts do n=n+1 p:clear() assert(p.empty) end; "
-//            "assert(n==3)"
-//            ));
-//    }
-//}
+TEST_CASE_METHOD(LuaTest, "iteration") {
+    CHECK_NOTHROW(state.doString(
+        "local n=0; "
+        "for part in blufs.path('/foo/bar.txt'):parts() do n=n+1 end; "
+        "assert(n==3)"
+        "for part in blufs.path('/foo/bar.txt'):parts() do n=n+1 end; "
+        "assert(n==6)"));
+}
 
 TEST_CASE_METHOD(LuaTest, "enums") {
     // see boost filesystem docs

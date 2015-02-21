@@ -10,6 +10,7 @@
 
 #include <boost/filesystem.hpp>
 #include <boost/interprocess/sync/file_lock.hpp>
+#include <boost/shared_ptr.hpp>
 
 #include <lua.hpp>
 
@@ -28,7 +29,7 @@ std::ostream& operator<<(std::ostream& s, blufs::path const& p) {
     return s << p.generic_string();
 }
 
-blufs::path itself(blufs::path const& self) { return self; }
+blufs::path const& itself(blufs::path const& self) { return self; }
 blufs::path absolute_d(blufs::path const& self) { return blufs::absolute(self); }
 blufs::path canonical_d(blufs::path const& self) { return blufs::canonical(self); }
 void current_path_s(std::string const& p) { blufs::current_path(p); }
@@ -41,7 +42,7 @@ void register_blufs (lua_State* L) {
 
     module(L, "blufs")
     [
-        class_<path>("path")
+        class_<path, boost::shared_ptr<path>>("path")
             .def(constructor<std::string const&>())
             .def(constructor<>())
             .def(constructor<path const&>())
@@ -60,10 +61,10 @@ void register_blufs (lua_State* L) {
             .property("stem", &path::stem)
             .property("extension", &path::extension)
             .property("empty", &path::empty)
-            .property("parts", itself, return_stl_iterator)
             .property("exists", (bool(*)(path const&))exists)
             .property("absolute",absolute_d)
             .property("canonical", canonical_d)
+            .def("parts", itself, return_stl_iterator)
             .def("absolute_to", (path(*)(path const&, path const&))absolute)
             .def("canonical_to", (path(*)(path const&, path const&))canonical)
             .def("clear", &path::clear)
