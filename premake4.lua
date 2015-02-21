@@ -9,7 +9,8 @@ end
 
 local function link_additional_boost_libs()
 	configuration 'linux'
-	links { 'boost_filesystem', 'dl', 'pthread' }
+	links { 'boost_filesystem', 'dl', 'pthread', 'readline' }
+	-- buildoptions '-Wl,-E'
 	configuration 'macosx'
 		links 'boost_filesystem'
 	configuration '*'
@@ -27,7 +28,11 @@ function get_local_lua()
 			links 'lua5.3'
 		end,
 		generate_build = function(self)
-			make_shared_lib('lua5.3',{
+			local lualib_build = make_static_lib
+			if os.get() == 'windows' then
+				lualib_build = make_shared_lib
+			end
+			lualib_build('lua5.3',{
 				path.join(lua_dir,'src','*.h'),
 				path.join(lua_dir,'src','*.c')
 			})

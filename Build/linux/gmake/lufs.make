@@ -30,8 +30,8 @@ ifeq ($(config),debug32)
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake/x32/Debug -L. -m32 -L/usr/lib32
-  LDDEPS    += ../../../bin/linux/gmake/x32/Debug/lua5.3.so ../../../bin/linux/gmake/x32/Debug/libluabind.a
-  LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl
+  LDDEPS    += ../../../bin/linux/gmake/x32/Debug/lua5.3.a ../../../bin/linux/gmake/x32/Debug/libluabind.a
+  LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl -lreadline
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -52,8 +52,8 @@ ifeq ($(config),release32)
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake/x32/Release -L. -s -m32 -L/usr/lib32
-  LDDEPS    += ../../../bin/linux/gmake/x32/Release/lua5.3.so ../../../bin/linux/gmake/x32/Release/libluabind.a
-  LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl
+  LDDEPS    += ../../../bin/linux/gmake/x32/Release/lua5.3.a ../../../bin/linux/gmake/x32/Release/libluabind.a
+  LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl -lreadline
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -74,8 +74,8 @@ ifeq ($(config),debug64)
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake/x64/Debug -L. -m64 -L/usr/lib64
-  LDDEPS    += ../../../bin/linux/gmake/x64/Debug/lua5.3.so ../../../bin/linux/gmake/x64/Debug/libluabind.a
-  LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl
+  LDDEPS    += ../../../bin/linux/gmake/x64/Debug/lua5.3.a ../../../bin/linux/gmake/x64/Debug/libluabind.a
+  LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl -lreadline
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -96,8 +96,8 @@ ifeq ($(config),release64)
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake/x64/Release -L. -s -m64 -L/usr/lib64
-  LDDEPS    += ../../../bin/linux/gmake/x64/Release/lua5.3.so ../../../bin/linux/gmake/x64/Release/libluabind.a
-  LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl
+  LDDEPS    += ../../../bin/linux/gmake/x64/Release/lua5.3.a ../../../bin/linux/gmake/x64/Release/libluabind.a
+  LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl -lreadline
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -118,8 +118,8 @@ ifeq ($(config),debug)
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake -L.
-  LDDEPS    += ../../../bin/linux/gmake/lua5.3.so ../../../bin/linux/gmake/libluabind.a
-  LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl
+  LDDEPS    += ../../../bin/linux/gmake/lua5.3.a ../../../bin/linux/gmake/libluabind.a
+  LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl -lreadline
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -140,8 +140,8 @@ ifeq ($(config),release)
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake -L. -s
-  LDDEPS    += ../../../bin/linux/gmake/lua5.3.so ../../../bin/linux/gmake/libluabind.a
-  LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl
+  LDDEPS    += ../../../bin/linux/gmake/lua5.3.a ../../../bin/linux/gmake/libluabind.a
+  LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl -lreadline
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
