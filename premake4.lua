@@ -37,7 +37,10 @@ function get_local_lua()
 			}
 			configuration 'windows'
 				defines 'LUA_BUILD_AS_DLL'
+			configuration 'linux'
+				defines 'LUA_USE_LINUX'
 			configuration 'macosx'
+				defines 'LUA_USE_MACOSX'
 				targetextension '.so'
 		 	configuration '*'
 		 	targetprefix ''
