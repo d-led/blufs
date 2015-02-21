@@ -93,12 +93,11 @@ if local_lua then
 	lua = get_local_lua()
 else
 	lua = assert(dofile 'premake/recipes/lua.lua')
+	lua.generate_build = function() end
 end
 lua:set_includedirs()
 lua:set_libdirs()
-if local_lua then
-	lua.generate_build()
-end
+lua.generate_build()
 
 make_static_lib('luabind',{'./deps/luabind/src/*.cpp'})
 platform_specifics()
