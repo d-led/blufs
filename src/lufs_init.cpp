@@ -7,6 +7,7 @@
  */
 
 #include "blufs_lib.h"
+#include "resource.h"
 
 #include <lua.hpp>
 #include <iostream>
@@ -14,6 +15,8 @@
 namespace {
     void init_blufs(lua_State* L) {
         register_blufs(L);
+        luaL_dostring(L, blufs::Resource::compat().c_str());
+        luaL_dostring(L, blufs::Resource::lualinq().c_str());
     }
 }
 

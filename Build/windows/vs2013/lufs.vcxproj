@@ -275,9 +275,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\src\resource.h" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="..\..\..\src\blufs_lib.cpp" />
     <ClCompile Include="..\..\..\src\customizable_lua.c" />
     <ClCompile Include="..\..\..\src\lufs_init.cpp" />
+    <ClCompile Include="..\..\..\src\resource.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\src\resources.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="lua5.3.vcxproj">

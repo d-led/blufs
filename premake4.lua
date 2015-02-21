@@ -111,7 +111,10 @@ lua:set_links()
 make_console_app('lufs',{
 	'src/customizable_lua.c',
 	'src/blufs_lib.cpp',
-	'src/lufs_init.cpp'
+	'src/lufs_init.cpp',
+	'src/resource.h',
+	'src/resource.cpp',
+	'src/resources.json'
 })
 lua:set_links()
 boost:set_links()
@@ -133,3 +136,27 @@ lua:set_links()
 platform_specifics()
 run_target_after_build()
 link_additional_boost_libs()
+
+
+newaction {
+   trigger     = "res",
+   description = "compile the resources",
+   execute     = function ()
+	   	local function exec(command)
+		    local handle = io.popen(command)
+		    local result = handle:read("*a")
+		    handle:close()
+		    print(result)
+		    return result
+		end
+        local ok = false
+        local uname = os.get()
+        if uname == 'windows' or uname:find'mingw' then
+            exec[[ris\ris src\resources.json]]
+        elseif uname == 'macosx' or uname == 'darwin' then
+            exec[[ris/ris.osx src/resources.json]]
+        elseif uname == 'linux' then
+            exec[[ris/ris src/resources.json]]
+        end
+   end
+}

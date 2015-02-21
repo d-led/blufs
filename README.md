@@ -19,6 +19,12 @@ lufs
 a customized lua executable, which includes *blufs*.
 
 ![lufs](doc/img/lufs.png)
+
+embedded libraries
+------------------
+
+- [lualinq](https://github.com/xanathar/lualinq.git), Copyright (c) 2014, Marco Mastropaolo
+- *blufs*
  
 
 dependencies

@@ -10,3 +10,6 @@
 [submodule "Catch"]
 	path = deps/Catch
 	url = https://github.com/philsquared/Catch.git
+[submodule "deps/lualinq"]
+	path = deps/lualinq
+	url = https://github.com/xanathar/lualinq.git
