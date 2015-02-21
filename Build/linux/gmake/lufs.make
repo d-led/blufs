@@ -155,6 +155,7 @@ OBJECTS := \
 	$(OBJDIR)/customizable_lua.o \
 	$(OBJDIR)/blufs_lib.o \
 	$(OBJDIR)/lufs_init.o \
+	$(OBJDIR)/resource.o \
 
 RESOURCES := \
 
@@ -223,6 +224,10 @@ $(OBJDIR)/blufs_lib.o: ../../../src/blufs_lib.cpp
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
 
 $(OBJDIR)/lufs_init.o: ../../../src/lufs_init.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
+
+$(OBJDIR)/resource.o: ../../../src/resource.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
 
