@@ -12,9 +12,9 @@
 #include <iostream>
 
 namespace {
-	void init_blufs(lua_State* L) {
+    void init_blufs(lua_State* L) {
 
-	}
+    }
 }
 
 extern "C" {
