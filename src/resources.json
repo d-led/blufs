@@ -1,0 +1,18 @@
+{
+   "header" : "src/resource.h",
+   "class" : "Resource",
+   "namespace" : "blufs",
+   "resources" : [
+      {
+         "name" : "lualinq",
+         "source" : "../deps/lualinq/release/lualinq/lualinq.lua",
+         "source_type" : "file"
+      },
+      {
+         "name" : "compat",
+         "source" : "compat.lua",
+         "source_type" : "file"
+      }
+   ],
+   "source" : "src/resource.cpp"
+}
