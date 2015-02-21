@@ -28,9 +28,10 @@ std::ostream& operator<<(std::ostream& s, blufs::path const& p) {
     return s << p.generic_string();
 }
 
-blufs::path itself(blufs::path const& self) {
-    return self;
-}
+blufs::path itself(blufs::path const& self) { return self; }
+blufs::path absolute_d(blufs::path const& self) { return blufs::absolute(self); }
+blufs::path canonical_d(blufs::path const& self) { return blufs::canonical(self); }
+void current_path_s(std::string const& p) { blufs::current_path(p); }
 
 void register_blufs (lua_State* L) {
     using namespace luabind;
@@ -46,9 +47,9 @@ void register_blufs (lua_State* L) {
             .def(constructor<path const&>())
             .def(tostring(self))
             //.def(const_self + path())
-            //.def(const_self / path())
+            .def(const_self / path())
             //.def(const_self + std::string())
-            //.def(const_self / std::string())
+            .def(const_self / std::string())
             .property("generic_string", (std::string(path::*)()const) &path::generic_string)
             .property("root_path", &path::root_path)
             .property("root_name", &path::root_name)
@@ -60,6 +61,11 @@ void register_blufs (lua_State* L) {
             .property("extension", &path::extension)
             .property("empty", &path::empty)
             .property("parts", itself, return_stl_iterator)
+            .property("exists", (bool(*)(path const&))exists)
+            .property("absolute",absolute_d)
+            .property("canonical", canonical_d)
+            .def("absolute_to", (path(*)(path const&, path const&))absolute)
+            .def("canonical_to", (path(*)(path const&, path const&))canonical)
             .def("clear", &path::clear)
             .def("make_preferred", &path::make_preferred)
             .def("remove_filename", &path::remove_filename)
@@ -132,23 +138,14 @@ void register_blufs (lua_State* L) {
             ]
         ,
 
-         def("current_path", (blufs::path(*)()) blufs::current_path)
-        //def("current_path", fs::set_current_path),
-        //def("current_path", fs::set_current_path_s),
-        //def("current_path", fs::get_current_path),
-        //def("create_directories", fs::create_directories),
+        def("current_path", (blufs::path(*)()) blufs::current_path),
+        def("current_path", (void(*)(blufs::path const&)) blufs::current_path),
+        def("current_path", current_path_s ),
+        def("create_directories", (bool(*)(blufs::path const&)) blufs::create_directories),
         // def("create_directories", fs::create_directories_s),
-        //def("create_directory", fs::create_directory),
+        def("create_directory", (bool(*)(blufs::path const&)) blufs::create_directory),
         // def("create_directory", fs::create_directory_s),
-        //def("copy", fs::copy),
+        def("copy", (void(*)(blufs::path const&,blufs::path const&)) blufs::copy)
         // def("copy", fs::copy_s),
-        //def("absolute", &blufs::absolute),
-        // def("absolute", &blufs::absolute_s),
-        //def("absolute", &blufs::absolute_with_base),
-        // def("absolute", &blufs::absolute_with_base_s),
-        //def("canonical", &blufs::canonical),
-        // def("canonical", &blufs::canonical_s),
-        //def("canonical", &blufs::canonical_with_base),
-        // def("canonical", &blufs::canonical_with_base_s)
     ];
 }
