@@ -13,7 +13,7 @@
 
 namespace {
     void init_blufs(lua_State* L) {
-
+        register_blufs(L);
     }
 }
 
