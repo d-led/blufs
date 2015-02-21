@@ -275,6 +275,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\lapi.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\lauxlib.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\lcode.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\lctype.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\ldebug.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\ldo.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\lfunc.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\lgc.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\llex.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\llimits.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\lmem.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\lobject.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\lopcodes.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\lparser.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\lprefix.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\lstate.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\lstring.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\ltable.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\ltm.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\lua.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\luaconf.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\lualib.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\lundump.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\lvm.h" />
+    <ClInclude Include="..\..\..\deps\lua\lua-5.3.0\src\lzio.h" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="..\..\..\deps\lua\lua-5.3.0\src\lapi.c" />
     <ClCompile Include="..\..\..\deps\lua\lua-5.3.0\src\lauxlib.c" />
     <ClCompile Include="..\..\..\deps\lua\lua-5.3.0\src\lbaselib.c" />
