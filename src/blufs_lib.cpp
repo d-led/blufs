@@ -37,6 +37,10 @@ void current_path_s(std::string const& p) { blufs::current_path(p); }
 bool create_directories_s(std::string const& p) { return blufs::create_directories(p); }
 bool create_directory_s(std::string const& p) { return blufs::create_directory(p); }
 void copy_s(std::string const& from,std::string const& to) { blufs::copy(from,to); }
+void copy_directory_s(std::string const& from,std::string const& to) { blufs::copy_directory(from,to); }
+void copy_file_s(std::string const& from,std::string const& to) { blufs::copy_file(from,to); }
+void copy_symlink_s(std::string const& from,std::string const& to) { blufs::copy_symlink(from,to); }
+
 
 void register_blufs (lua_State* L) {
     using namespace luabind;
@@ -152,6 +156,13 @@ void register_blufs (lua_State* L) {
         def("create_directory", (bool(*)(blufs::path const&)) blufs::create_directory),
         def("create_directory", create_directory_s),
         def("copy", (void(*)(blufs::path const&,blufs::path const&)) blufs::copy),
-        def("copy", copy_s)
+        def("copy", copy_s),
+        def("copy_directory", (void(*)(blufs::path const&,blufs::path const&)) blufs::copy_directory),
+        def("copy_directory", copy_directory_s),
+        def("copy_file", (void(*)(blufs::path const&,blufs::path const&)) blufs::copy_file),
+        def("copy_file", copy_file_s),
+        def("copy_symlink", (void(*)(blufs::path const&,blufs::path const&)) blufs::copy_symlink),
+        def("copy_symlink", copy_symlink_s)
+
     ];
 }
