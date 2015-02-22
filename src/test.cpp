@@ -4,7 +4,6 @@
 #include <boost/filesystem.hpp>
 #include <LuaState.h>
 #include <luabind/luabind.hpp>
-#include <sstream>
 
 using namespace boost::filesystem;
 
@@ -116,9 +115,7 @@ TEST_CASE_METHOD(LuaTest, "path construction and conversion") {
     }
 
     boost::filesystem::path res(".");
-    std::stringstream ss;
-    ss<<res;
-    CHECK_NOTHROW(state.doString(std::string("assert(tostring(blufs.path('.')) == [[")+ss.str()+"]])"));
+    CHECK_NOTHROW(state.doString(std::string("assert(tostring(blufs.path('.')) == [[")+res.generic_string()+"]])"));
 }
 
 TEST_CASE_METHOD(LuaTest, "concatenation and appends") {
@@ -179,18 +176,19 @@ TEST_CASE_METHOD(LuaTest, "enums") {
     CHECK(static_cast<int>(symlink_file) == static_cast<int>(state["blufs"]["path"]["symlink_file"]));
 }
 
+TEST_CASE_METHOD(LuaTest, "queries") {
+    std::string res = state.doString("return blufs.path'a'.absolute.generic_string");
+    CHECK(res == absolute("a").generic_string());
+
+    CHECK_NOTHROW(state.doString("return blufs.path'b/c':absolute_to(blufs.path'a').generic_string"));
+    std::string res2 = state.doString("return blufs.path'b/c':absolute_to(blufs.path'a').generic_string");
+    CHECK(res2 == absolute("b/c", "a").generic_string());
+}
+
 TEST_CASE_METHOD(LuaTest, "operational functions") {
-   std::string res=state.doString("return blufs.absolute(blufs.path'a').generic_string");
-   CHECK(res == absolute("a").generic_string());
-   
-   CHECK_NOTHROW(state.doString("return blufs.absolute(blufs.path'b/c',blufs.path('a')).generic_string"));
-   std::string res2 = state.doString("return blufs.absolute('b/c','a').generic_string");
-   CHECK(res2 == absolute("b/c","a").generic_string());
-
-   // same for canonical
-
-   CHECK_THROWS(state.doString("blufs.canonical('bad_guy')"));
-   CHECK_NOTHROW(state.doString("blufs.canonical('.')"));
+    //todo
+    //CHECK_THROWS(state.doString("blufs.canonical(blufs.path'bad_guy')"));
+    //CHECK_NOTHROW(state.doString("blufs.canonical(blufs.path'.')"));
 }
 
 TEST_CASE_METHOD(LuaTest, "creating directories and copying") {

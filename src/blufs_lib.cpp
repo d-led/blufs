@@ -27,7 +27,7 @@
 namespace blufs = boost::filesystem;
 
 std::ostream& operator<<(std::ostream& s, blufs::path const& p) {
-    return s << p;
+    return s << p.generic_string();
 }
 
 blufs::path const& itself(blufs::path const& self) { return self; }
