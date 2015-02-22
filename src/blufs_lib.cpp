@@ -52,6 +52,7 @@ void register_blufs (lua_State* L) {
             .def(const_self / path())
             //.def(const_self + std::string())
             .def(const_self / std::string())
+            .def(const_self == std::string())
             .property("generic_string", (std::string(path::*)()const) &path::generic_string)
             .property("root_path", &path::root_path)
             .property("root_name", &path::root_name)
