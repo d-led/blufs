@@ -5,6 +5,7 @@ a lua wrapper of the [Boost Filesystem](http://www.boost.org/doc/libs/1_57_0/lib
 
 [![Build Status](https://travis-ci.org/d-led/blufs.png?branch=master)](https://travis-ci.org/d-led/blufs)
 
+Status: API discovery
 
 specification
 =============

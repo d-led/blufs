@@ -41,7 +41,8 @@ void create_hard_link_s(std::string const& from,std::string const& to) { return 
 void create_symlink_s(std::string const& from,std::string const& to) { return blufs::create_symlink(from,to); }
 void copy_s(std::string const& from,std::string const& to) { blufs::copy(from,to); }
 void copy_directory_s(std::string const& from,std::string const& to) { blufs::copy_directory(from,to); }
-void copy_file_s(std::string const& from,std::string const& to) { blufs::copy_file(from,to); }
+// bug: https://svn.boost.org/trac/boost/ticket/6124
+// void copy_file_s(std::string const& from,std::string const& to) { blufs::copy_file(from,to); }
 void copy_symlink_s(std::string const& from,std::string const& to) { blufs::copy_symlink(from,to); }
 bool equivalent_s(std::string const& from,std::string const& to) { return blufs::equivalent(from,to); }
 uintmax_t file_size_s(std::string const& p) { return blufs::file_size(p); }
@@ -173,8 +174,8 @@ void register_blufs (lua_State* L) {
         def("copy", copy_s),
         def("copy_directory", (void(*)(blufs::path const&,blufs::path const&)) blufs::copy_directory),
         def("copy_directory", copy_directory_s),
-        def("copy_file", (void(*)(blufs::path const&,blufs::path const&)) blufs::copy_file),
-        def("copy_file", copy_file_s),
+        // def("copy_file", (void(*)(blufs::path const&,blufs::path const&)) blufs::copy_file),
+        // def("copy_file", copy_file_s),
         def("copy_symlink", (void(*)(blufs::path const&,blufs::path const&)) blufs::copy_symlink),
         def("copy_symlink", copy_symlink_s),
         def("equivalent", (bool(*)(blufs::path const&,blufs::path const&)) blufs::equivalent),

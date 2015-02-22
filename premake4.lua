@@ -9,7 +9,7 @@ end
 
 local function link_additional_boost_libs()
 	configuration 'linux'
-	links { 'boost_filesystem', 'dl', 'pthread', 'readline' }
+	links { 'boost_system', 'boost_filesystem', 'dl', 'pthread', 'readline' }
 	-- buildoptions '-Wl,-E'
 	configuration 'macosx'
 		links 'boost_filesystem'
