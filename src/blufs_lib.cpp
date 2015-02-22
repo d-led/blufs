@@ -17,6 +17,7 @@
 #include <luabind/luabind.hpp>
 #include <luabind/tag_function.hpp>
 #include <luabind/operator.hpp>
+#include <luabind/copy_policy.hpp>
 #include <luabind/iterator_policy.hpp>
 #include <boost/container/vector.hpp>
 #include <string>
@@ -64,7 +65,7 @@ void register_blufs (lua_State* L) {
             .property("exists", (bool(*)(path const&))exists)
             .property("absolute",absolute_d)
             .property("canonical", canonical_d)
-            .def("parts", itself, return_stl_iterator)
+            .def("parts", itself, copy(result) + return_stl_iterator)
             .def("absolute_to", (path(*)(path const&, path const&))absolute)
             .def("canonical_to", (path(*)(path const&, path const&))canonical)
             .def("clear", &path::clear)
