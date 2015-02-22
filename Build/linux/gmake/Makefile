@@ -6,7 +6,7 @@ ifndef config
 endif
 export config
 
-PROJECTS := lua5.3 luabind blufs lufs test_blufs
+PROJECTS := lua5.3 luabind blufs custom_lua lufs test_blufs
 
 .PHONY: all clean help $(PROJECTS)
 
@@ -24,11 +24,15 @@ blufs: luabind lua5.3
 	@echo "==== Building blufs ($(config)) ===="
 	@${MAKE} --no-print-directory -C . -f blufs.make
 
-lufs: lua5.3 luabind
+custom_lua: 
+	@echo "==== Building custom_lua ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f custom_lua.make
+
+lufs: luabind custom_lua lua5.3
 	@echo "==== Building lufs ($(config)) ===="
 	@${MAKE} --no-print-directory -C . -f lufs.make
 
-test_blufs: luabind blufs lua5.3
+test_blufs: lua5.3 luabind
 	@echo "==== Building test_blufs ($(config)) ===="
 	@${MAKE} --no-print-directory -C . -f test_blufs.make
 
@@ -36,6 +40,7 @@ clean:
 	@${MAKE} --no-print-directory -C . -f lua5.3.make clean
 	@${MAKE} --no-print-directory -C . -f luabind.make clean
 	@${MAKE} --no-print-directory -C . -f blufs.make clean
+	@${MAKE} --no-print-directory -C . -f custom_lua.make clean
 	@${MAKE} --no-print-directory -C . -f lufs.make clean
 	@${MAKE} --no-print-directory -C . -f test_blufs.make clean
 
@@ -56,6 +61,7 @@ help:
 	@echo "   lua5.3"
 	@echo "   luabind"
 	@echo "   blufs"
+	@echo "   custom_lua"
 	@echo "   lufs"
 	@echo "   test_blufs"
 	@echo ""

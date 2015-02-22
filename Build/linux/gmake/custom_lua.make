@@ -20,151 +20,139 @@ ifndef RESCOMP
 endif
 
 ifeq ($(config),debug32)
-  OBJDIR     = ../../../obj/linux/gmake/x32/Debug/test_blufs/x32
+  OBJDIR     = ../../../obj/linux/gmake/x32/Debug/custom_lua/x32
   TARGETDIR  = ../../../bin/linux/gmake/x32/Debug
-  TARGET     = $(TARGETDIR)/test_blufs
-  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG -DLUA_COMPAT_APIINTCASTS
+  TARGET     = $(TARGETDIR)/libcustom_lua.a
+  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG
   INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32 -std=c++0x -fPIC
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake/x32/Debug -L. -m32 -L/usr/lib32
-  LDDEPS    += ../../../bin/linux/gmake/x32/Debug/lua5.3.so ../../../bin/linux/gmake/x32/Debug/libluabind.a
-  LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl -lreadline
-  LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
+  ALL_LDFLAGS   += $(LDFLAGS) -m32 -L/usr/lib32
+  LDDEPS    +=
+  LIBS      += $(LDDEPS)
+  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
   endef
   define POSTBUILDCMDS
-	@echo Running post-build commands
-	$(TARGET)
   endef
 endif
 
 ifeq ($(config),release32)
-  OBJDIR     = ../../../obj/linux/gmake/x32/Release/test_blufs/x32
+  OBJDIR     = ../../../obj/linux/gmake/x32/Release/custom_lua/x32
   TARGETDIR  = ../../../bin/linux/gmake/x32/Release
-  TARGET     = $(TARGETDIR)/test_blufs
-  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE -DLUA_COMPAT_APIINTCASTS
+  TARGET     = $(TARGETDIR)/libcustom_lua.a
+  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE
   INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32 -std=c++0x -fPIC
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake/x32/Release -L. -s -m32 -L/usr/lib32
-  LDDEPS    += ../../../bin/linux/gmake/x32/Release/lua5.3.so ../../../bin/linux/gmake/x32/Release/libluabind.a
-  LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl -lreadline
-  LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
+  ALL_LDFLAGS   += $(LDFLAGS) -s -m32 -L/usr/lib32
+  LDDEPS    +=
+  LIBS      += $(LDDEPS)
+  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
   endef
   define POSTBUILDCMDS
-	@echo Running post-build commands
-	$(TARGET)
   endef
 endif
 
 ifeq ($(config),debug64)
-  OBJDIR     = ../../../obj/linux/gmake/x64/Debug/test_blufs/x64
+  OBJDIR     = ../../../obj/linux/gmake/x64/Debug/custom_lua/x64
   TARGETDIR  = ../../../bin/linux/gmake/x64/Debug
-  TARGET     = $(TARGETDIR)/test_blufs
-  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG -DLUA_COMPAT_APIINTCASTS
+  TARGET     = $(TARGETDIR)/libcustom_lua.a
+  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG
   INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64 -std=c++0x -fPIC
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake/x64/Debug -L. -m64 -L/usr/lib64
-  LDDEPS    += ../../../bin/linux/gmake/x64/Debug/lua5.3.so ../../../bin/linux/gmake/x64/Debug/libluabind.a
-  LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl -lreadline
-  LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
+  ALL_LDFLAGS   += $(LDFLAGS) -m64 -L/usr/lib64
+  LDDEPS    +=
+  LIBS      += $(LDDEPS)
+  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
   endef
   define POSTBUILDCMDS
-	@echo Running post-build commands
-	$(TARGET)
   endef
 endif
 
 ifeq ($(config),release64)
-  OBJDIR     = ../../../obj/linux/gmake/x64/Release/test_blufs/x64
+  OBJDIR     = ../../../obj/linux/gmake/x64/Release/custom_lua/x64
   TARGETDIR  = ../../../bin/linux/gmake/x64/Release
-  TARGET     = $(TARGETDIR)/test_blufs
-  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE -DLUA_COMPAT_APIINTCASTS
+  TARGET     = $(TARGETDIR)/libcustom_lua.a
+  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE
   INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64 -std=c++0x -fPIC
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake/x64/Release -L. -s -m64 -L/usr/lib64
-  LDDEPS    += ../../../bin/linux/gmake/x64/Release/lua5.3.so ../../../bin/linux/gmake/x64/Release/libluabind.a
-  LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl -lreadline
-  LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
+  ALL_LDFLAGS   += $(LDFLAGS) -s -m64 -L/usr/lib64
+  LDDEPS    +=
+  LIBS      += $(LDDEPS)
+  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
   endef
   define POSTBUILDCMDS
-	@echo Running post-build commands
-	$(TARGET)
   endef
 endif
 
 ifeq ($(config),debug)
-  OBJDIR     = ../../../obj/linux/gmake/Native/Debug/test_blufs
+  OBJDIR     = ../../../obj/linux/gmake/Native/Debug/custom_lua
   TARGETDIR  = ../../../bin/linux/gmake
-  TARGET     = $(TARGETDIR)/test_blufs
-  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG -DLUA_COMPAT_APIINTCASTS
+  TARGET     = $(TARGETDIR)/libcustom_lua.a
+  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG
   INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -std=c++0x -fPIC
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake -L.
-  LDDEPS    += ../../../bin/linux/gmake/lua5.3.so ../../../bin/linux/gmake/libluabind.a
-  LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl -lreadline
-  LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
+  ALL_LDFLAGS   += $(LDFLAGS)
+  LDDEPS    +=
+  LIBS      += $(LDDEPS)
+  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
   endef
   define POSTBUILDCMDS
-	@echo Running post-build commands
-	$(TARGET)
   endef
 endif
 
 ifeq ($(config),release)
-  OBJDIR     = ../../../obj/linux/gmake/Native/Release/test_blufs
+  OBJDIR     = ../../../obj/linux/gmake/Native/Release/custom_lua
   TARGETDIR  = ../../../bin/linux/gmake
-  TARGET     = $(TARGETDIR)/test_blufs
-  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE -DLUA_COMPAT_APIINTCASTS
+  TARGET     = $(TARGETDIR)/libcustom_lua.a
+  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE
   INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -std=c++0x -fPIC
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake -L. -s
-  LDDEPS    += ../../../bin/linux/gmake/lua5.3.so ../../../bin/linux/gmake/libluabind.a
-  LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl -lreadline
-  LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
+  ALL_LDFLAGS   += $(LDFLAGS) -s
+  LDDEPS    +=
+  LIBS      += $(LDDEPS)
+  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
   endef
   define POSTBUILDCMDS
-	@echo Running post-build commands
-	$(TARGET)
   endef
 endif
 
 OBJECTS := \
-	$(OBJDIR)/test.o \
+	$(OBJDIR)/customizable_lua.o \
 
 RESOURCES := \
 
@@ -182,7 +170,7 @@ all: $(TARGETDIR) $(OBJDIR) prebuild prelink $(TARGET)
 	@:
 
 $(TARGET): $(GCH) $(OBJECTS) $(LDDEPS) $(RESOURCES)
-	@echo Linking test_blufs
+	@echo Linking custom_lua
 	$(SILENT) $(LINKCMD)
 	$(POSTBUILDCMDS)
 
@@ -203,7 +191,7 @@ else
 endif
 
 clean:
-	@echo Cleaning test_blufs
+	@echo Cleaning custom_lua
 ifeq (posix,$(SHELLTYPE))
 	$(SILENT) rm -f  $(TARGET)
 	$(SILENT) rm -rf $(OBJDIR)
@@ -224,9 +212,9 @@ $(GCH): $(PCH)
 	$(SILENT) $(CXX) -x c++-header $(ALL_CXXFLAGS) -MMD -MP $(DEFINES) $(INCLUDES) -o "$@" -MF "$(@:%.gch=%.d)" -c "$<"
 endif
 
-$(OBJDIR)/test.o: ../../../src/test.cpp
+$(OBJDIR)/customizable_lua.o: ../../../src/customizable_lua.c
 	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
 
 -include $(OBJECTS:%.o=%.d)
 ifneq (,$(PCH))

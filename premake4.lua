@@ -28,15 +28,15 @@ function get_local_lua()
 			links 'lua5.3'
 		end,
 		generate_build = function(self)
-			local lualib_build = make_static_lib
-			if os.get() == 'windows' then
-				lualib_build = make_shared_lib
-			end
+			local lualib_build = make_shared_lib
+			-- if os.get() == 'windows' then
+			-- 	lualib_build = make_shared_lib
+			-- end
 			lualib_build('lua5.3',{
 				path.join(lua_dir,'src','*.h'),
 				path.join(lua_dir,'src','*.c')
 			})
-			platform_specifics()
+			language 'C'
 			excludes { 
 				path.join(lua_dir,'src','lua.c'),
 				path.join(lua_dir,'src','luac.c')
@@ -107,32 +107,31 @@ configuration '*'
 boost:set_links()
 lua:set_links()
 
+make_static_lib('custom_lua',{'src/customizable_lua.c'})
+
 ------------------LUFS---
 make_console_app('lufs',{
-	'src/customizable_lua.c',
 	'src/blufs_lib.cpp',
 	'src/lufs_init.cpp',
 	'src/resource.h',
 	'src/resource.cpp',
 	'src/resources.json'
 })
-lua:set_links()
 boost:set_links()
 links {
-	'luabind'
+	'luabind',
+	'custom_lua'
 }
+lua:set_links()
 link_additional_boost_libs()
-defines {
-	'open_custom_libs=lufs_init'
-}
 platform_specifics()
 
 ------------------TEST---------------------------
 make_console_app('test_blufs',{ 'src/test.cpp' })
-links {'luabind', 'blufs' }
+lua:set_links()
+links {'luabind' } --, 'blufs'
 defines 'LUA_COMPAT_APIINTCASTS'
 boost:set_links()
-lua:set_links()
 platform_specifics()
 run_target_after_build()
 link_additional_boost_libs()

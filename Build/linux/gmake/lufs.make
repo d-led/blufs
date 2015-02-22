@@ -23,14 +23,14 @@ ifeq ($(config),debug32)
   OBJDIR     = ../../../obj/linux/gmake/x32/Debug/lufs/x32
   TARGETDIR  = ../../../bin/linux/gmake/x32/Debug
   TARGET     = $(TARGETDIR)/lufs
-  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG -Dopen_custom_libs=lufs_init
+  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG
   INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake/x32/Debug -L. -m32 -L/usr/lib32
-  LDDEPS    += ../../../bin/linux/gmake/x32/Debug/lua5.3.a ../../../bin/linux/gmake/x32/Debug/libluabind.a
+  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../../../bin/linux/gmake/x32/Debug -m32 -L/usr/lib32
+  LDDEPS    += ../../../bin/linux/gmake/x32/Debug/libluabind.a ../../../bin/linux/gmake/x32/Debug/libcustom_lua.a ../../../bin/linux/gmake/x32/Debug/lua5.3.so
   LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl -lreadline
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
@@ -45,14 +45,14 @@ ifeq ($(config),release32)
   OBJDIR     = ../../../obj/linux/gmake/x32/Release/lufs/x32
   TARGETDIR  = ../../../bin/linux/gmake/x32/Release
   TARGET     = $(TARGETDIR)/lufs
-  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE -Dopen_custom_libs=lufs_init
+  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE
   INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake/x32/Release -L. -s -m32 -L/usr/lib32
-  LDDEPS    += ../../../bin/linux/gmake/x32/Release/lua5.3.a ../../../bin/linux/gmake/x32/Release/libluabind.a
+  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../../../bin/linux/gmake/x32/Release -s -m32 -L/usr/lib32
+  LDDEPS    += ../../../bin/linux/gmake/x32/Release/libluabind.a ../../../bin/linux/gmake/x32/Release/libcustom_lua.a ../../../bin/linux/gmake/x32/Release/lua5.3.so
   LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl -lreadline
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
@@ -67,14 +67,14 @@ ifeq ($(config),debug64)
   OBJDIR     = ../../../obj/linux/gmake/x64/Debug/lufs/x64
   TARGETDIR  = ../../../bin/linux/gmake/x64/Debug
   TARGET     = $(TARGETDIR)/lufs
-  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG -Dopen_custom_libs=lufs_init
+  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG
   INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake/x64/Debug -L. -m64 -L/usr/lib64
-  LDDEPS    += ../../../bin/linux/gmake/x64/Debug/lua5.3.a ../../../bin/linux/gmake/x64/Debug/libluabind.a
+  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../../../bin/linux/gmake/x64/Debug -m64 -L/usr/lib64
+  LDDEPS    += ../../../bin/linux/gmake/x64/Debug/libluabind.a ../../../bin/linux/gmake/x64/Debug/libcustom_lua.a ../../../bin/linux/gmake/x64/Debug/lua5.3.so
   LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl -lreadline
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
@@ -89,14 +89,14 @@ ifeq ($(config),release64)
   OBJDIR     = ../../../obj/linux/gmake/x64/Release/lufs/x64
   TARGETDIR  = ../../../bin/linux/gmake/x64/Release
   TARGET     = $(TARGETDIR)/lufs
-  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE -Dopen_custom_libs=lufs_init
+  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE
   INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake/x64/Release -L. -s -m64 -L/usr/lib64
-  LDDEPS    += ../../../bin/linux/gmake/x64/Release/lua5.3.a ../../../bin/linux/gmake/x64/Release/libluabind.a
+  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../../../bin/linux/gmake/x64/Release -s -m64 -L/usr/lib64
+  LDDEPS    += ../../../bin/linux/gmake/x64/Release/libluabind.a ../../../bin/linux/gmake/x64/Release/libcustom_lua.a ../../../bin/linux/gmake/x64/Release/lua5.3.so
   LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl -lreadline
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
@@ -111,14 +111,14 @@ ifeq ($(config),debug)
   OBJDIR     = ../../../obj/linux/gmake/Native/Debug/lufs
   TARGETDIR  = ../../../bin/linux/gmake
   TARGET     = $(TARGETDIR)/lufs
-  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG -Dopen_custom_libs=lufs_init
+  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DDEBUG -D_DEBUG
   INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake -L.
-  LDDEPS    += ../../../bin/linux/gmake/lua5.3.a ../../../bin/linux/gmake/libluabind.a
+  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../../../bin/linux/gmake
+  LDDEPS    += ../../../bin/linux/gmake/libluabind.a ../../../bin/linux/gmake/libcustom_lua.a ../../../bin/linux/gmake/lua5.3.so
   LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl -lreadline
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
@@ -133,14 +133,14 @@ ifeq ($(config),release)
   OBJDIR     = ../../../obj/linux/gmake/Native/Release/lufs
   TARGETDIR  = ../../../bin/linux/gmake
   TARGET     = $(TARGETDIR)/lufs
-  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE -Dopen_custom_libs=lufs_init
+  DEFINES   += -DBOOST_NO_VARIADIC_TEMPLATES -DRELEASE
   INCLUDES  += -I../../../deps/luabind -I../../../deps/Catch/single_include -I../../../deps/LuaState/include -I../../../deps/lua/lua-5.3.0/src
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -std=c++0x -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L../../../bin/linux/gmake -L. -s
-  LDDEPS    += ../../../bin/linux/gmake/lua5.3.a ../../../bin/linux/gmake/libluabind.a
+  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../../../bin/linux/gmake -s
+  LDDEPS    += ../../../bin/linux/gmake/libluabind.a ../../../bin/linux/gmake/libcustom_lua.a ../../../bin/linux/gmake/lua5.3.so
   LIBS      += $(LDDEPS) -lboost_system -lpthread -lboost_filesystem -ldl -lreadline
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
@@ -152,7 +152,6 @@ ifeq ($(config),release)
 endif
 
 OBJECTS := \
-	$(OBJDIR)/customizable_lua.o \
 	$(OBJDIR)/blufs_lib.o \
 	$(OBJDIR)/lufs_init.o \
 	$(OBJDIR)/resource.o \
@@ -214,10 +213,6 @@ $(GCH): $(PCH)
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) -x c++-header $(ALL_CXXFLAGS) -MMD -MP $(DEFINES) $(INCLUDES) -o "$@" -MF "$(@:%.gch=%.d)" -c "$<"
 endif
-
-$(OBJDIR)/customizable_lua.o: ../../../src/customizable_lua.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
 
 $(OBJDIR)/blufs_lib.o: ../../../src/blufs_lib.cpp
 	@echo $(notdir $<)
