@@ -34,6 +34,9 @@ blufs::path const& itself(blufs::path const& self) { return self; }
 blufs::path absolute_d(blufs::path const& self) { return blufs::absolute(self); }
 blufs::path canonical_d(blufs::path const& self) { return blufs::canonical(self); }
 void current_path_s(std::string const& p) { blufs::current_path(p); }
+bool create_directories_s(std::string const& p) { return blufs::create_directories(p); }
+bool create_directory_s(std::string const& p) { return blufs::create_directory(p); }
+void copy_s(std::string const& from,std::string const& to) { blufs::copy(from,to); }
 
 void register_blufs (lua_State* L) {
     using namespace luabind;
@@ -145,10 +148,10 @@ void register_blufs (lua_State* L) {
         def("current_path", (void(*)(blufs::path const&)) blufs::current_path),
         def("current_path", current_path_s ),
         def("create_directories", (bool(*)(blufs::path const&)) blufs::create_directories),
-        // def("create_directories", fs::create_directories_s),
+        def("create_directories", create_directories_s),
         def("create_directory", (bool(*)(blufs::path const&)) blufs::create_directory),
-        // def("create_directory", fs::create_directory_s),
-        def("copy", (void(*)(blufs::path const&,blufs::path const&)) blufs::copy)
-        // def("copy", fs::copy_s),
+        def("create_directory", create_directory_s),
+        def("copy", (void(*)(blufs::path const&,blufs::path const&)) blufs::copy),
+        def("copy", copy_s)
     ];
 }
