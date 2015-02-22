@@ -36,11 +36,19 @@ blufs::path canonical_d(blufs::path const& self) { return blufs::canonical(self)
 void current_path_s(std::string const& p) { blufs::current_path(p); }
 bool create_directories_s(std::string const& p) { return blufs::create_directories(p); }
 bool create_directory_s(std::string const& p) { return blufs::create_directory(p); }
+void create_directory_symlink_s(std::string const& from,std::string const& to) { return blufs::create_directory_symlink(from,to); }
+void create_hard_link_s(std::string const& from,std::string const& to) { return blufs::create_hard_link(from,to); }
+void create_symlink_s(std::string const& from,std::string const& to) { return blufs::create_symlink(from,to); }
 void copy_s(std::string const& from,std::string const& to) { blufs::copy(from,to); }
 void copy_directory_s(std::string const& from,std::string const& to) { blufs::copy_directory(from,to); }
 void copy_file_s(std::string const& from,std::string const& to) { blufs::copy_file(from,to); }
 void copy_symlink_s(std::string const& from,std::string const& to) { blufs::copy_symlink(from,to); }
-
+bool equivalent_s(std::string const& from,std::string const& to) { return blufs::equivalent(from,to); }
+uintmax_t file_size_s(std::string const& p) { return blufs::file_size(p); }
+bool is_directory_s(std::string const& p) { return blufs::is_directory(p); }
+bool is_empty_s(std::string const& p) { return blufs::is_empty(p); }
+bool is_regular_file_s(std::string const& p) { return blufs::is_regular_file(p); }
+bool is_other_s(std::string const& p) { return blufs::is_other(p); }
 
 void register_blufs (lua_State* L) {
     using namespace luabind;
@@ -155,6 +163,12 @@ void register_blufs (lua_State* L) {
         def("create_directories", create_directories_s),
         def("create_directory", (bool(*)(blufs::path const&)) blufs::create_directory),
         def("create_directory", create_directory_s),
+        def("create_directory_symlink", (void(*)(blufs::path const&,blufs::path const&)) blufs::create_directory_symlink),
+        def("create_directory_symlink", create_directory_symlink_s),
+        def("create_hard_link", (void(*)(blufs::path const&,blufs::path const&)) blufs::create_hard_link),
+        def("create_hard_link", create_hard_link_s),
+        def("create_symlink", (void(*)(blufs::path const&,blufs::path const&)) blufs::create_symlink),
+        def("create_symlink", create_symlink_s),
         def("copy", (void(*)(blufs::path const&,blufs::path const&)) blufs::copy),
         def("copy", copy_s),
         def("copy_directory", (void(*)(blufs::path const&,blufs::path const&)) blufs::copy_directory),
@@ -162,7 +176,20 @@ void register_blufs (lua_State* L) {
         def("copy_file", (void(*)(blufs::path const&,blufs::path const&)) blufs::copy_file),
         def("copy_file", copy_file_s),
         def("copy_symlink", (void(*)(blufs::path const&,blufs::path const&)) blufs::copy_symlink),
-        def("copy_symlink", copy_symlink_s)
-
+        def("copy_symlink", copy_symlink_s),
+        def("equivalent", (bool(*)(blufs::path const&,blufs::path const&)) blufs::equivalent),
+        def("equivalent", equivalent_s),
+        def("file_size", (uintmax_t(*)(blufs::path const&)) blufs::file_size),
+        def("file_size", file_size_s),
+        def("initial_path", (blufs::path(*)()) blufs::initial_path),
+        def("is_directory", (bool(*)(blufs::path const&)) blufs::is_directory),
+        def("is_directory", is_directory_s),
+        def("is_empty", (bool(*)(blufs::path const&)) blufs::is_empty),
+        def("is_empty", is_empty_s),
+        def("is_regular_file", (bool(*)(blufs::path const&)) blufs::is_regular_file),
+        def("is_regular_file", is_regular_file_s),
+        def("is_other", (bool(*)(blufs::path const&)) blufs::is_other),
+        def("is_other", is_other_s)
+        //next last_write_time
     ];
 }
