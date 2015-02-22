@@ -35,44 +35,44 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{800D4BE7-6CC5-8C34-D5CC-6590C1A32725}</ProjectGuid>
+    <ProjectGuid>{A1CC7010-8D84-B25D-F68B-8BB9E2624D4E}</ProjectGuid>
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>test_blufs</RootNamespace>
+    <RootNamespace>custom_lua</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug native|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release native|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v120</PlatformToolset>
@@ -100,120 +100,100 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\..\bin\windows\vs2013\x32\Debug\</OutDir>
-    <IntDir>..\..\..\obj\windows\vs2013\x32\Debug\test_blufs\</IntDir>
-    <TargetName>test_blufs</TargetName>
-    <TargetExt>.exe</TargetExt>
+    <IntDir>..\..\..\obj\windows\vs2013\x32\Debug\custom_lua\</IntDir>
+    <TargetName>custom_lua</TargetName>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\..\bin\windows\vs2013\x64\Debug\</OutDir>
-    <IntDir>..\..\..\obj\windows\vs2013\x64\Debug\test_blufs\</IntDir>
-    <TargetName>test_blufs</TargetName>
-    <TargetExt>.exe</TargetExt>
+    <IntDir>..\..\..\obj\windows\vs2013\x64\Debug\custom_lua\</IntDir>
+    <TargetName>custom_lua</TargetName>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug native|Win32'">
-    <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\..\bin\windows\vs2013\native\Debug\</OutDir>
-    <IntDir>..\..\..\obj\windows\vs2013\native\Debug\test_blufs\</IntDir>
-    <TargetName>test_blufs</TargetName>
-    <TargetExt>.exe</TargetExt>
+    <IntDir>..\..\..\obj\windows\vs2013\native\Debug\custom_lua\</IntDir>
+    <TargetName>custom_lua</TargetName>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\..\bin\windows\vs2013\x32\Release\</OutDir>
-    <IntDir>..\..\..\obj\windows\vs2013\x32\Release\test_blufs\</IntDir>
-    <TargetName>test_blufs</TargetName>
-    <TargetExt>.exe</TargetExt>
+    <IntDir>..\..\..\obj\windows\vs2013\x32\Release\custom_lua\</IntDir>
+    <TargetName>custom_lua</TargetName>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\..\bin\windows\vs2013\x64\Release\</OutDir>
-    <IntDir>..\..\..\obj\windows\vs2013\x64\Release\test_blufs\</IntDir>
-    <TargetName>test_blufs</TargetName>
-    <TargetExt>.exe</TargetExt>
+    <IntDir>..\..\..\obj\windows\vs2013\x64\Release\custom_lua\</IntDir>
+    <TargetName>custom_lua</TargetName>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release native|Win32'">
-    <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\..\bin\windows\vs2013\native\Release\</OutDir>
-    <IntDir>..\..\..\obj\windows\vs2013\native\Release\test_blufs\</IntDir>
-    <TargetName>test_blufs</TargetName>
-    <TargetExt>.exe</TargetExt>
+    <IntDir>..\..\..\obj\windows\vs2013\native\Release\custom_lua\</IntDir>
+    <TargetName>custom_lua</TargetName>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;LUA_COMPAT_APIINTCASTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;LUA_COMPAT_APIINTCASTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Software\boost\boost_1_56_0\lib32-msvc-12.0;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
-    <PostBuildEvent>
-      <Command>"$(TargetPath)"</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;LUA_COMPAT_APIINTCASTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;LUA_COMPAT_APIINTCASTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Software\boost\boost_1_56_0\lib64-msvc-12.0;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
-    <PostBuildEvent>
-      <Command>"$(TargetPath)"</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug native|Win32'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;LUA_COMPAT_APIINTCASTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;LUA_COMPAT_APIINTCASTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;DEBUG;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
-    <PostBuildEvent>
-      <Command>"$(TargetPath)"</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;LUA_COMPAT_APIINTCASTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -222,26 +202,21 @@
       <StringPooling>true</StringPooling>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;LUA_COMPAT_APIINTCASTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>D:\Software\boost\boost_1_56_0\lib32-msvc-12.0;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
-    <PostBuildEvent>
-      <Command>"$(TargetPath)"</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;LUA_COMPAT_APIINTCASTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -250,26 +225,21 @@
       <StringPooling>true</StringPooling>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;LUA_COMPAT_APIINTCASTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>D:\Software\boost\boost_1_56_0\lib64-msvc-12.0;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
-    <PostBuildEvent>
-      <Command>"$(TargetPath)"</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release native|Win32'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;LUA_COMPAT_APIINTCASTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -278,30 +248,18 @@
       <StringPooling>true</StringPooling>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;LUA_COMPAT_APIINTCASTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0501;WIN32;BOOST_NO_VARIADIC_TEMPLATES;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\..\..\deps\luabind;..\..\..\deps\Catch\single_include;..\..\..\deps\LuaState\include;..\..\..\deps\lua\lua-5.3.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
-    <PostBuildEvent>
-      <Command>"$(TargetPath)"</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\src\test.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="lua5.3.vcxproj">
-      <Project>{FD73470C-E915-72E2-D2D0-8536BE11F932}</Project>
-    </ProjectReference>
-    <ProjectReference Include="luabind.vcxproj">
-      <Project>{A4A34F95-1083-CE30-199B-590785F93492}</Project>
-    </ProjectReference>
+    <ClCompile Include="..\..\..\src\customizable_lua.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
