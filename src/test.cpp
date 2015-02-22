@@ -4,6 +4,7 @@
 #include <boost/filesystem.hpp>
 #include <LuaState.h>
 #include <luabind/luabind.hpp>
+#include <sstream>
 
 using namespace boost::filesystem;
 
@@ -114,7 +115,10 @@ TEST_CASE_METHOD(LuaTest, "path construction and conversion") {
         CHECK_NOTHROW(state.doString("assert(not blufs.path('.').empty)"));
     }
 
-    CHECK_NOTHROW(state.doString("assert(tostring(blufs.path('.')) == '.')"));
+    boost::filesystem::path res(".");
+    std::stringstream ss;
+    ss<<res;
+    CHECK_NOTHROW(state.doString(std::string("assert(tostring(blufs.path('.')) == [[")+ss.str()+"]])"));
 }
 
 TEST_CASE_METHOD(LuaTest, "concatenation and appends") {
