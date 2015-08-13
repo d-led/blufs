@@ -1,10 +1,16 @@
 language: cpp
 
-before_install:
- - sudo add-apt-repository -y ppa:boost-latest/ppa
- - sudo apt-get update -qq
- - sudo apt-get -qq install boost1.55
- # - sudo apt-get install lua5.1 liblua5.1-dev
+sudo: false
+
+addons:
+  apt:
+    sources:
+      - boost-latest
+    packages:
+      - libboost1.55-all-dev
+
+cache:
+  - apt
 
 script:
   - make -C Build/linux/gmake config=release64
